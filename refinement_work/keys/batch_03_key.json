@@ -1,0 +1,1225 @@
+{
+  "batch_id": "batch_03",
+  "answers": [
+    {
+      "source_id": 611,
+      "answer": "A"
+    },
+    {
+      "source_id": 612,
+      "answer": "B"
+    },
+    {
+      "source_id": 613,
+      "answer": "A"
+    },
+    {
+      "source_id": 614,
+      "answer": "B"
+    },
+    {
+      "source_id": 615,
+      "answer": "D"
+    },
+    {
+      "source_id": 616,
+      "answer": "B"
+    },
+    {
+      "source_id": 617,
+      "answer": "A"
+    },
+    {
+      "source_id": 618,
+      "answer": "B"
+    },
+    {
+      "source_id": 619,
+      "answer": "C"
+    },
+    {
+      "source_id": 620,
+      "answer": "C"
+    },
+    {
+      "source_id": 621,
+      "answer": "B"
+    },
+    {
+      "source_id": 622,
+      "answer": "B"
+    },
+    {
+      "source_id": 623,
+      "answer": "A"
+    },
+    {
+      "source_id": 624,
+      "answer": "B"
+    },
+    {
+      "source_id": 625,
+      "answer": "A"
+    },
+    {
+      "source_id": 626,
+      "answer": "A"
+    },
+    {
+      "source_id": 627,
+      "answer": "C"
+    },
+    {
+      "source_id": 628,
+      "answer": "C"
+    },
+    {
+      "source_id": 629,
+      "answer": "A"
+    },
+    {
+      "source_id": 630,
+      "answer": "B"
+    },
+    {
+      "source_id": 631,
+      "answer": "D"
+    },
+    {
+      "source_id": 632,
+      "answer": "D"
+    },
+    {
+      "source_id": 633,
+      "answer": "C"
+    },
+    {
+      "source_id": 634,
+      "answer": "C"
+    },
+    {
+      "source_id": 635,
+      "answer": "A"
+    },
+    {
+      "source_id": 636,
+      "answer": "B"
+    },
+    {
+      "source_id": 637,
+      "answer": "B"
+    },
+    {
+      "source_id": 638,
+      "answer": "C"
+    },
+    {
+      "source_id": 639,
+      "answer": "B"
+    },
+    {
+      "source_id": 640,
+      "answer": "D"
+    },
+    {
+      "source_id": 641,
+      "answer": "A"
+    },
+    {
+      "source_id": 642,
+      "answer": "B"
+    },
+    {
+      "source_id": 643,
+      "answer": "D"
+    },
+    {
+      "source_id": 644,
+      "answer": "D"
+    },
+    {
+      "source_id": 645,
+      "answer": "B"
+    },
+    {
+      "source_id": 646,
+      "answer": "B"
+    },
+    {
+      "source_id": 647,
+      "answer": "A"
+    },
+    {
+      "source_id": 648,
+      "answer": "B"
+    },
+    {
+      "source_id": 649,
+      "answer": "A"
+    },
+    {
+      "source_id": 650,
+      "answer": "B"
+    },
+    {
+      "source_id": 651,
+      "answer": "C"
+    },
+    {
+      "source_id": 652,
+      "answer": "D"
+    },
+    {
+      "source_id": 653,
+      "answer": "A"
+    },
+    {
+      "source_id": 654,
+      "answer": "B"
+    },
+    {
+      "source_id": 655,
+      "answer": "A"
+    },
+    {
+      "source_id": 656,
+      "answer": "D"
+    },
+    {
+      "source_id": 657,
+      "answer": "C"
+    },
+    {
+      "source_id": 658,
+      "answer": "B"
+    },
+    {
+      "source_id": 659,
+      "answer": "A"
+    },
+    {
+      "source_id": 660,
+      "answer": "B"
+    },
+    {
+      "source_id": 661,
+      "answer": "B"
+    },
+    {
+      "source_id": 662,
+      "answer": "C"
+    },
+    {
+      "source_id": 663,
+      "answer": "C"
+    },
+    {
+      "source_id": 664,
+      "answer": "C"
+    },
+    {
+      "source_id": 665,
+      "answer": "B"
+    },
+    {
+      "source_id": 666,
+      "answer": "A"
+    },
+    {
+      "source_id": 667,
+      "answer": "D"
+    },
+    {
+      "source_id": 668,
+      "answer": "D"
+    },
+    {
+      "source_id": 669,
+      "answer": "B"
+    },
+    {
+      "source_id": 670,
+      "answer": "B"
+    },
+    {
+      "source_id": 671,
+      "answer": "A"
+    },
+    {
+      "source_id": 672,
+      "answer": "B"
+    },
+    {
+      "source_id": 673,
+      "answer": "C"
+    },
+    {
+      "source_id": 674,
+      "answer": "D"
+    },
+    {
+      "source_id": 675,
+      "answer": "B"
+    },
+    {
+      "source_id": 676,
+      "answer": "B"
+    },
+    {
+      "source_id": 677,
+      "answer": "A"
+    },
+    {
+      "source_id": 678,
+      "answer": "B"
+    },
+    {
+      "source_id": 679,
+      "answer": "B"
+    },
+    {
+      "source_id": 680,
+      "answer": "C"
+    },
+    {
+      "source_id": 681,
+      "answer": "D"
+    },
+    {
+      "source_id": 682,
+      "answer": "A"
+    },
+    {
+      "source_id": 683,
+      "answer": "A"
+    },
+    {
+      "source_id": 684,
+      "answer": "B"
+    },
+    {
+      "source_id": 685,
+      "answer": "C"
+    },
+    {
+      "source_id": 686,
+      "answer": "D"
+    },
+    {
+      "source_id": 687,
+      "answer": "B"
+    },
+    {
+      "source_id": 688,
+      "answer": "A"
+    },
+    {
+      "source_id": 689,
+      "answer": "B"
+    },
+    {
+      "source_id": 690,
+      "answer": "A"
+    },
+    {
+      "source_id": 691,
+      "answer": "B"
+    },
+    {
+      "source_id": 692,
+      "answer": "D"
+    },
+    {
+      "source_id": 693,
+      "answer": "C"
+    },
+    {
+      "source_id": 694,
+      "answer": "A"
+    },
+    {
+      "source_id": 695,
+      "answer": "B"
+    },
+    {
+      "source_id": 696,
+      "answer": "A"
+    },
+    {
+      "source_id": 697,
+      "answer": "C"
+    },
+    {
+      "source_id": 698,
+      "answer": "B"
+    },
+    {
+      "source_id": 699,
+      "answer": "D"
+    },
+    {
+      "source_id": 700,
+      "answer": "A"
+    },
+    {
+      "source_id": 701,
+      "answer": "B"
+    },
+    {
+      "source_id": 702,
+      "answer": "A"
+    },
+    {
+      "source_id": 703,
+      "answer": "D"
+    },
+    {
+      "source_id": 704,
+      "answer": "B"
+    },
+    {
+      "source_id": 705,
+      "answer": "C"
+    },
+    {
+      "source_id": 706,
+      "answer": "A"
+    },
+    {
+      "source_id": 707,
+      "answer": "B"
+    },
+    {
+      "source_id": 708,
+      "answer": "A"
+    },
+    {
+      "source_id": 709,
+      "answer": "C"
+    },
+    {
+      "source_id": 710,
+      "answer": "B"
+    },
+    {
+      "source_id": 711,
+      "answer": "D"
+    },
+    {
+      "source_id": 712,
+      "answer": "A"
+    },
+    {
+      "source_id": 713,
+      "answer": "A"
+    },
+    {
+      "source_id": 714,
+      "answer": "B"
+    },
+    {
+      "source_id": 715,
+      "answer": "A"
+    },
+    {
+      "source_id": 716,
+      "answer": "C"
+    },
+    {
+      "source_id": 717,
+      "answer": "B"
+    },
+    {
+      "source_id": 718,
+      "answer": "D"
+    },
+    {
+      "source_id": 719,
+      "answer": "B"
+    },
+    {
+      "source_id": 720,
+      "answer": "A"
+    },
+    {
+      "source_id": 721,
+      "answer": "C"
+    },
+    {
+      "source_id": 722,
+      "answer": "D"
+    },
+    {
+      "source_id": 723,
+      "answer": "B"
+    },
+    {
+      "source_id": 724,
+      "answer": "A"
+    },
+    {
+      "source_id": 725,
+      "answer": "B"
+    },
+    {
+      "source_id": 726,
+      "answer": "A"
+    },
+    {
+      "source_id": 727,
+      "answer": "B"
+    },
+    {
+      "source_id": 728,
+      "answer": "C"
+    },
+    {
+      "source_id": 729,
+      "answer": "D"
+    },
+    {
+      "source_id": 730,
+      "answer": "A"
+    },
+    {
+      "source_id": 731,
+      "answer": "B"
+    },
+    {
+      "source_id": 732,
+      "answer": "A"
+    },
+    {
+      "source_id": 733,
+      "answer": "D"
+    },
+    {
+      "source_id": 734,
+      "answer": "C"
+    },
+    {
+      "source_id": 735,
+      "answer": "B"
+    },
+    {
+      "source_id": 736,
+      "answer": "A"
+    },
+    {
+      "source_id": 737,
+      "answer": "B"
+    },
+    {
+      "source_id": 738,
+      "answer": "A"
+    },
+    {
+      "source_id": 739,
+      "answer": "D"
+    },
+    {
+      "source_id": 740,
+      "answer": "B"
+    },
+    {
+      "source_id": 741,
+      "answer": "C"
+    },
+    {
+      "source_id": 742,
+      "answer": "A"
+    },
+    {
+      "source_id": 743,
+      "answer": "B"
+    },
+    {
+      "source_id": 744,
+      "answer": "A"
+    },
+    {
+      "source_id": 745,
+      "answer": "C"
+    },
+    {
+      "source_id": 746,
+      "answer": "B"
+    },
+    {
+      "source_id": 747,
+      "answer": "D"
+    },
+    {
+      "source_id": 748,
+      "answer": "A"
+    },
+    {
+      "source_id": 749,
+      "answer": "A"
+    },
+    {
+      "source_id": 750,
+      "answer": "B"
+    },
+    {
+      "source_id": 751,
+      "answer": "C"
+    },
+    {
+      "source_id": 752,
+      "answer": "D"
+    },
+    {
+      "source_id": 753,
+      "answer": "B"
+    },
+    {
+      "source_id": 754,
+      "answer": "A"
+    },
+    {
+      "source_id": 755,
+      "answer": "A"
+    },
+    {
+      "source_id": 756,
+      "answer": "B"
+    },
+    {
+      "source_id": 757,
+      "answer": "C"
+    },
+    {
+      "source_id": 758,
+      "answer": "B"
+    },
+    {
+      "source_id": 759,
+      "answer": "D"
+    },
+    {
+      "source_id": 760,
+      "answer": "A"
+    },
+    {
+      "source_id": 761,
+      "answer": "B"
+    },
+    {
+      "source_id": 762,
+      "answer": "A"
+    },
+    {
+      "source_id": 763,
+      "answer": "B"
+    },
+    {
+      "source_id": 764,
+      "answer": "D"
+    },
+    {
+      "source_id": 765,
+      "answer": "C"
+    },
+    {
+      "source_id": 766,
+      "answer": "A"
+    },
+    {
+      "source_id": 767,
+      "answer": "B"
+    },
+    {
+      "source_id": 768,
+      "answer": "A"
+    },
+    {
+      "source_id": 769,
+      "answer": "C"
+    },
+    {
+      "source_id": 770,
+      "answer": "B"
+    },
+    {
+      "source_id": 771,
+      "answer": "D"
+    },
+    {
+      "source_id": 772,
+      "answer": "A"
+    },
+    {
+      "source_id": 773,
+      "answer": "B"
+    },
+    {
+      "source_id": 774,
+      "answer": "A"
+    },
+    {
+      "source_id": 775,
+      "answer": "B"
+    },
+    {
+      "source_id": 776,
+      "answer": "C"
+    },
+    {
+      "source_id": 777,
+      "answer": "D"
+    },
+    {
+      "source_id": 778,
+      "answer": "A"
+    },
+    {
+      "source_id": 779,
+      "answer": "A"
+    },
+    {
+      "source_id": 780,
+      "answer": "B"
+    },
+    {
+      "source_id": 781,
+      "answer": "C"
+    },
+    {
+      "source_id": 782,
+      "answer": "B"
+    },
+    {
+      "source_id": 783,
+      "answer": "D"
+    },
+    {
+      "source_id": 784,
+      "answer": "A"
+    },
+    {
+      "source_id": 785,
+      "answer": "A"
+    },
+    {
+      "source_id": 786,
+      "answer": "B"
+    },
+    {
+      "source_id": 787,
+      "answer": "C"
+    },
+    {
+      "source_id": 788,
+      "answer": "B"
+    },
+    {
+      "source_id": 789,
+      "answer": "A"
+    },
+    {
+      "source_id": 790,
+      "answer": "D"
+    },
+    {
+      "source_id": 791,
+      "answer": "A"
+    },
+    {
+      "source_id": 792,
+      "answer": "B"
+    },
+    {
+      "source_id": 793,
+      "answer": "C"
+    },
+    {
+      "source_id": 794,
+      "answer": "D"
+    },
+    {
+      "source_id": 795,
+      "answer": "B"
+    },
+    {
+      "source_id": 796,
+      "answer": "A"
+    },
+    {
+      "source_id": 797,
+      "answer": "B"
+    },
+    {
+      "source_id": 798,
+      "answer": "A"
+    },
+    {
+      "source_id": 799,
+      "answer": "C"
+    },
+    {
+      "source_id": 800,
+      "answer": "B"
+    },
+    {
+      "source_id": 801,
+      "answer": "D"
+    },
+    {
+      "source_id": 802,
+      "answer": "A"
+    },
+    {
+      "source_id": 803,
+      "answer": "A"
+    },
+    {
+      "source_id": 804,
+      "answer": "B"
+    },
+    {
+      "source_id": 805,
+      "answer": "C"
+    },
+    {
+      "source_id": 806,
+      "answer": "B"
+    },
+    {
+      "source_id": 807,
+      "answer": "D"
+    },
+    {
+      "source_id": 808,
+      "answer": "A"
+    },
+    {
+      "source_id": 809,
+      "answer": "A"
+    },
+    {
+      "source_id": 810,
+      "answer": "B"
+    },
+    {
+      "source_id": 811,
+      "answer": "C"
+    },
+    {
+      "source_id": 812,
+      "answer": "B"
+    },
+    {
+      "source_id": 813,
+      "answer": "D"
+    },
+    {
+      "source_id": 814,
+      "answer": "A"
+    },
+    {
+      "source_id": 815,
+      "answer": "A"
+    },
+    {
+      "source_id": 816,
+      "answer": "B"
+    },
+    {
+      "source_id": 817,
+      "answer": "B"
+    },
+    {
+      "source_id": 818,
+      "answer": "C"
+    },
+    {
+      "source_id": 819,
+      "answer": "D"
+    },
+    {
+      "source_id": 820,
+      "answer": "A"
+    },
+    {
+      "source_id": 821,
+      "answer": "A"
+    },
+    {
+      "source_id": 822,
+      "answer": "B"
+    },
+    {
+      "source_id": 823,
+      "answer": "B"
+    },
+    {
+      "source_id": 824,
+      "answer": "C"
+    },
+    {
+      "source_id": 825,
+      "answer": "D"
+    },
+    {
+      "source_id": 826,
+      "answer": "A"
+    },
+    {
+      "source_id": 827,
+      "answer": "A"
+    },
+    {
+      "source_id": 828,
+      "answer": "B"
+    },
+    {
+      "source_id": 829,
+      "answer": "C"
+    },
+    {
+      "source_id": 830,
+      "answer": "B"
+    },
+    {
+      "source_id": 831,
+      "answer": "D"
+    },
+    {
+      "source_id": 832,
+      "answer": "A"
+    },
+    {
+      "source_id": 833,
+      "answer": "A"
+    },
+    {
+      "source_id": 834,
+      "answer": "B"
+    },
+    {
+      "source_id": 835,
+      "answer": "B"
+    },
+    {
+      "source_id": 836,
+      "answer": "A"
+    },
+    {
+      "source_id": 837,
+      "answer": "C"
+    },
+    {
+      "source_id": 838,
+      "answer": "D"
+    },
+    {
+      "source_id": 839,
+      "answer": "A"
+    },
+    {
+      "source_id": 840,
+      "answer": "B"
+    },
+    {
+      "source_id": 841,
+      "answer": "C"
+    },
+    {
+      "source_id": 842,
+      "answer": "B"
+    },
+    {
+      "source_id": 843,
+      "answer": "D"
+    },
+    {
+      "source_id": 844,
+      "answer": "A"
+    },
+    {
+      "source_id": 845,
+      "answer": "A"
+    },
+    {
+      "source_id": 846,
+      "answer": "B"
+    },
+    {
+      "source_id": 847,
+      "answer": "B"
+    },
+    {
+      "source_id": 848,
+      "answer": "C"
+    },
+    {
+      "source_id": 849,
+      "answer": "D"
+    },
+    {
+      "source_id": 850,
+      "answer": "A"
+    },
+    {
+      "source_id": 851,
+      "answer": "A"
+    },
+    {
+      "source_id": 852,
+      "answer": "B"
+    },
+    {
+      "source_id": 853,
+      "answer": "B"
+    },
+    {
+      "source_id": 854,
+      "answer": "D"
+    },
+    {
+      "source_id": 855,
+      "answer": "C"
+    },
+    {
+      "source_id": 856,
+      "answer": "D"
+    },
+    {
+      "source_id": 857,
+      "answer": "A"
+    },
+    {
+      "source_id": 858,
+      "answer": "B"
+    },
+    {
+      "source_id": 859,
+      "answer": "C"
+    },
+    {
+      "source_id": 860,
+      "answer": "B"
+    },
+    {
+      "source_id": 861,
+      "answer": "D"
+    },
+    {
+      "source_id": 862,
+      "answer": "A"
+    },
+    {
+      "source_id": 863,
+      "answer": "A"
+    },
+    {
+      "source_id": 864,
+      "answer": "B"
+    },
+    {
+      "source_id": 865,
+      "answer": "B"
+    },
+    {
+      "source_id": 866,
+      "answer": "C"
+    },
+    {
+      "source_id": 867,
+      "answer": "D"
+    },
+    {
+      "source_id": 868,
+      "answer": "A"
+    },
+    {
+      "source_id": 869,
+      "answer": "A"
+    },
+    {
+      "source_id": 870,
+      "answer": "B"
+    },
+    {
+      "source_id": 871,
+      "answer": "C"
+    },
+    {
+      "source_id": 872,
+      "answer": "B"
+    },
+    {
+      "source_id": 873,
+      "answer": "D"
+    },
+    {
+      "source_id": 874,
+      "answer": "A"
+    },
+    {
+      "source_id": 875,
+      "answer": "A"
+    },
+    {
+      "source_id": 876,
+      "answer": "B"
+    },
+    {
+      "source_id": 877,
+      "answer": "C"
+    },
+    {
+      "source_id": 878,
+      "answer": "B"
+    },
+    {
+      "source_id": 879,
+      "answer": "D"
+    },
+    {
+      "source_id": 880,
+      "answer": "A"
+    },
+    {
+      "source_id": 881,
+      "answer": "A"
+    },
+    {
+      "source_id": 882,
+      "answer": "B"
+    },
+    {
+      "source_id": 883,
+      "answer": "C"
+    },
+    {
+      "source_id": 884,
+      "answer": "B"
+    },
+    {
+      "source_id": 885,
+      "answer": "D"
+    },
+    {
+      "source_id": 886,
+      "answer": "A"
+    },
+    {
+      "source_id": 887,
+      "answer": "A"
+    },
+    {
+      "source_id": 888,
+      "answer": "B"
+    },
+    {
+      "source_id": 889,
+      "answer": "B"
+    },
+    {
+      "source_id": 890,
+      "answer": "C"
+    },
+    {
+      "source_id": 891,
+      "answer": "D"
+    },
+    {
+      "source_id": 892,
+      "answer": "A"
+    },
+    {
+      "source_id": 893,
+      "answer": "A"
+    },
+    {
+      "source_id": 894,
+      "answer": "B"
+    },
+    {
+      "source_id": 895,
+      "answer": "C"
+    },
+    {
+      "source_id": 896,
+      "answer": "B"
+    },
+    {
+      "source_id": 897,
+      "answer": "D"
+    },
+    {
+      "source_id": 898,
+      "answer": "A"
+    },
+    {
+      "source_id": 899,
+      "answer": "A"
+    },
+    {
+      "source_id": 900,
+      "answer": "B"
+    },
+    {
+      "source_id": 901,
+      "answer": "C"
+    },
+    {
+      "source_id": 902,
+      "answer": "B"
+    },
+    {
+      "source_id": 903,
+      "answer": "A"
+    },
+    {
+      "source_id": 904,
+      "answer": "D"
+    },
+    {
+      "source_id": 905,
+      "answer": "A"
+    },
+    {
+      "source_id": 906,
+      "answer": "B"
+    },
+    {
+      "source_id": 907,
+      "answer": "C"
+    },
+    {
+      "source_id": 908,
+      "answer": "B"
+    },
+    {
+      "source_id": 909,
+      "answer": "D"
+    },
+    {
+      "source_id": 910,
+      "answer": "A"
+    },
+    {
+      "source_id": 911,
+      "answer": "A"
+    },
+    {
+      "source_id": 912,
+      "answer": "B"
+    },
+    {
+      "source_id": 913,
+      "answer": "B"
+    },
+    {
+      "source_id": 914,
+      "answer": "C"
+    },
+    {
+      "source_id": 915,
+      "answer": "D"
+    }
+  ]
+}

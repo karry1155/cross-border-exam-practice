@@ -1,0 +1,35 @@
+{
+  "batch_stats": [
+    {
+      "file": "batch_01_candidates.json",
+      "batch_id": "batch_01",
+      "reviewed_count": 305,
+      "selected_count": 93,
+      "declared_selected_count": 93
+    },
+    {
+      "file": "batch_02_candidates.json",
+      "batch_id": "batch_02",
+      "reviewed_count": 305,
+      "selected_count": 90,
+      "declared_selected_count": 90
+    },
+    {
+      "file": "batch_03_candidates.json",
+      "batch_id": "batch_03",
+      "reviewed_count": 305,
+      "selected_count": 100,
+      "declared_selected_count": 100
+    },
+    {
+      "file": "batch_04_candidates.json",
+      "batch_id": "batch_04",
+      "reviewed_count": 303,
+      "selected_count": 90,
+      "declared_selected_count": 90
+    }
+  ],
+  "total_candidates_before_dedupe": 373,
+  "total_selected": 373,
+  "dropped_duplicate_count": 0
+}

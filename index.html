@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跨境电商五级冲刺训练舱</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="home-page">
+    <canvas class="signal-canvas" id="signalCanvas" aria-hidden="true"></canvas>
+    <main class="home-shell">
+      <nav class="home-nav" aria-label="项目导航">
+        <a class="brand-mark" href="./index.html" aria-label="返回首页">
+          <span class="brand-core">EC</span>
+          <span>五级冲刺</span>
+        </a>
+        <a class="nav-link" href="./quiz.html">精选选择题</a>
+        <a class="nav-link" href="./short-answer.html">简答实操题</a>
+      </nav>
+
+      <section class="hero-panel" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">电子商务师（跨境电子商务师）五级</p>
+          <h1 id="heroTitle">考前高压训练舱</h1>
+          <p class="hero-lead">
+            373 道精选选择判断题即时判分，17 组简答/实操任务逐题操练。错题、解析、记忆提示都在同一个静态项目里，上传 GitHub Pages 即可使用。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="./quiz.html">
+              <span class="action-icon" aria-hidden="true">✓</span>
+              开始选择题训练
+            </a>
+            <a class="secondary-action" href="./short-answer.html">
+              <span class="action-icon" aria-hidden="true">▣</span>
+              进入简答实操题
+            </a>
+          </div>
+        </div>
+        <div class="mission-console" aria-label="训练概览">
+          <div class="console-header">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="pulse-ring">
+            <div class="pulse-score">373</div>
+            <div class="pulse-label">精选题</div>
+          </div>
+          <div class="console-grid">
+            <div>
+              <strong>即时反馈</strong>
+              <span>答错即显示原因</span>
+            </div>
+            <div>
+              <strong>错题回炉</strong>
+              <span>本机自动记录</span>
+            </div>
+            <div>
+              <strong>分类训练</strong>
+              <span>36 个知识点方向</span>
+            </div>
+            <div>
+              <strong>静态托管</strong>
+              <span>GitHub Pages 友好</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="route-band" aria-label="练习入口">
+        <a class="route-card choice-route" href="./quiz.html">
+          <span class="route-kicker">Practice A</span>
+          <strong>精炼选择判断题</strong>
+          <span>按分类、随机、错题与收藏四种方式刷题，选项点击后立刻显示正确性和解析。</span>
+        </a>
+        <a class="route-card task-route" href="./short-answer.html">
+          <span class="route-kicker">Practice B</span>
+          <strong>简答与实操任务</strong>
+          <span>基于题目答案汇总整理成互动练习，覆盖商品资料、图片拍摄、店铺、订单、物流和表格处理。</span>
+        </a>
+      </section>
+    </main>
+    <script src="./home.js"></script>
+  </body>
+</html>

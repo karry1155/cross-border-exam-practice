@@ -1,0 +1,3197 @@
+{
+  "total_notes": 532,
+  "notes": [
+    {
+      "source_id": 61,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 62,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 63,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 64,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 67,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 68,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 69,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 70,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 73,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 74,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 75,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 76,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 79,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 80,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 81,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 82,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 85,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 86,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 87,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 88,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 91,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 92,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 93,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 94,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 97,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 98,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 99,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 100,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 103,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 104,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 105,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 106,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 109,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 110,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 111,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 112,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 115,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 116,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 117,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 118,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 121,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 122,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 123,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 124,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 127,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 128,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 129,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 130,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 133,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 134,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 135,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 136,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 139,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 140,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 141,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 142,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 145,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 146,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 147,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 148,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 151,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 152,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 153,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 154,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 157,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 158,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 159,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 160,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 163,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 164,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 165,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 166,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 169,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 170,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 171,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 172,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 175,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 176,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 177,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 178,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 181,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 182,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 183,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 184,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 187,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 188,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 189,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 190,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 193,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 194,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 195,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 196,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 199,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 200,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 201,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 202,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 205,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 206,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 207,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 208,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 211,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 212,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 213,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 214,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 217,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 218,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 219,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 220,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 223,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 224,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 225,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 226,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 229,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 230,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 231,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 232,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 235,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 236,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 237,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 238,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 241,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 242,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 243,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 244,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 247,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 248,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 249,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 250,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 253,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 254,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 255,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 256,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 259,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 260,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 261,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 262,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 265,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 266,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 267,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 268,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 271,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 272,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 273,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 274,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 277,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 278,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 279,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 280,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 283,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 284,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 285,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 286,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 289,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 290,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 291,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 292,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 295,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 296,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 297,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 298,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 301,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 302,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 303,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 304,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 307,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 308,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 309,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 310,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 313,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 314,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 315,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 316,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 319,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 320,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 321,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 322,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 325,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 326,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 327,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 328,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 331,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 332,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 333,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 334,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 337,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 338,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 339,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 340,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 343,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 344,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 345,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 346,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 349,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 350,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 351,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 352,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 355,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 356,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 357,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 358,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 361,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 362,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 363,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 364,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 367,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 368,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 369,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 370,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 373,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 374,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 375,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 376,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 379,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 380,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 381,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 382,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 385,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 386,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 387,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 388,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 391,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 392,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 393,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 394,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 397,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 398,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 399,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 400,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 403,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 404,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 405,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 406,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 409,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 410,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 411,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 412,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 415,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 416,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 417,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 418,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 421,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 422,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 423,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 424,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 427,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 428,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 429,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 430,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 433,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 434,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 435,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 436,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 439,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 440,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 441,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 442,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 445,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 446,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 447,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 448,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 451,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 452,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 453,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 454,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 457,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 458,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 459,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 460,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 463,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 464,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 465,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 466,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 469,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 470,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 471,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 472,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 475,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 476,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 477,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 478,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 481,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 482,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 483,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 484,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 487,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 488,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 489,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 490,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 493,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 494,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 495,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 496,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 499,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 500,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 501,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 502,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 505,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 506,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 507,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 508,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 511,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 512,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 513,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 514,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 517,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 518,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 519,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 520,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 523,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 524,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 525,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 526,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 529,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 530,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 531,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 532,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 535,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 536,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 537,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 538,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 541,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 542,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 543,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 544,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 547,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 548,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 549,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 550,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 553,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 554,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 555,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 556,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 559,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 560,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 561,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 562,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 565,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 566,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 567,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 568,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 571,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 572,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 573,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 574,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 577,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 578,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 579,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 580,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 583,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 584,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 585,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 586,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 589,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 590,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 591,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 592,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 595,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 596,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 597,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 598,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 601,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 602,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 603,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 604,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 607,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 608,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 609,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 610,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 613,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 614,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 615,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 616,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 619,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 620,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 621,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 622,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 625,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 626,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 627,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 628,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 631,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 632,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 633,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 634,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 637,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 638,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 639,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 640,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 643,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 644,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 645,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 646,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 649,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 650,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 651,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 652,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 655,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 656,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 657,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 658,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 661,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 662,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 663,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 664,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 667,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 668,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 669,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 670,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 673,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 674,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 675,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 676,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 679,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 680,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 681,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 682,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 685,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 686,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 687,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 688,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 691,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 692,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 693,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 694,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 697,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 698,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 699,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 700,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 703,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 704,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 705,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 706,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 709,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 710,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 711,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 712,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 715,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 716,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 717,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 718,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 721,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 722,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 723,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 724,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 727,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 728,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 729,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 730,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 733,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 734,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 735,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 736,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 799,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 800,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 801,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 802,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 805,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 806,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 807,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 808,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 811,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 812,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 813,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 814,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 817,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 818,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 819,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 820,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 823,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 824,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 825,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 826,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 829,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 830,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 831,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 832,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 835,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 836,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 837,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 838,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 841,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 842,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 843,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 844,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 847,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 848,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 849,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 850,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 853,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 854,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 855,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 856,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 979,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 980,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 981,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 982,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 985,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 986,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 987,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 988,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 991,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 992,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 993,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 994,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 997,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 998,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 999,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 1000,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 1003,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 1004,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 1005,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 1006,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 1009,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 1010,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 1011,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 1012,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 1015,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 1016,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 1017,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 1018,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 1021,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 1022,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 1023,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 1024,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 1027,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 1028,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 1029,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 1030,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    },
+    {
+      "source_id": 1033,
+      "notes": [
+        "removed suspicious option E=\"C\""
+      ]
+    },
+    {
+      "source_id": 1034,
+      "notes": [
+        "removed suspicious option E=\"B\""
+      ]
+    },
+    {
+      "source_id": 1035,
+      "notes": [
+        "removed suspicious option E=\"D\""
+      ]
+    },
+    {
+      "source_id": 1036,
+      "notes": [
+        "removed suspicious option E=\"A\""
+      ]
+    }
+  ]
+}

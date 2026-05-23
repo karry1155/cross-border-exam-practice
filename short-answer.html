@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>电子商务师五级实操互动练习</title>
+  <style>
+    :root {
+      --ink:#172033; --muted:#64748b; --line:#d7e0ea; --paper:#f6f8fb;
+      --panel:#fff; --brand:#1f4e78; --accent:#d49a38;
+      --good:#147a43; --good-bg:#e7f7ee; --bad:#b42318; --bad-bg:#fff0ee;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin:0; background:var(--paper); color:var(--ink);
+      font:15px/1.55 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Arial,sans-serif;
+    }
+    header { position:sticky; top:0; z-index:5; background:#ffffffee; border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
+    .topbar { max-width:1240px; margin:auto; padding:18px 24px 12px; display:grid; grid-template-columns:1fr auto; gap:16px; align-items:center; }
+    h1 { margin:0; color:var(--brand); font-size:24px; }
+    .score { border:1px solid var(--line); border-radius:8px; padding:9px 13px; background:#fff; color:var(--muted); font-weight:700; }
+    .score strong { color:var(--brand); font-size:20px; }
+    nav { max-width:1240px; margin:auto; padding:0 24px 14px; display:flex; gap:8px; overflow-x:auto; }
+    nav button { flex:0 0 auto; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--brand); padding:7px 10px; font-size:13px; font-weight:700; cursor:pointer; }
+    nav button.active { border-color:var(--brand); background:#e8f1f9; }
+    nav button.done { border-color:var(--good); color:var(--good); }
+    main { max-width:1240px; margin:auto; padding:24px; }
+    section { margin:0 0 28px; padding:22px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    h2 { margin:0 0 16px; color:var(--brand); font-size:20px; border-left:5px solid var(--accent); padding-left:10px; }
+    h3 { margin:0 0 8px; font-size:17px; color:#21344f; }
+    .pager { display:flex; justify-content:space-between; gap:10px; align-items:center; margin:0 0 12px; color:var(--muted); font-weight:800; }
+    .pager button { border:1px solid #bdc9d8; background:white; border-radius:8px; padding:8px 12px; color:var(--brand); font:inherit; font-weight:800; cursor:pointer; }
+    .pager button:disabled { color:#94a3b8; cursor:not-allowed; background:#f1f5f9; }
+    .material { margin:0 0 18px; padding:12px; border:1px solid #d7e0ea; border-radius:8px; background:#f3f6fa; color:#334155; }
+    .material-title { margin:0 0 8px; color:#294564; font-weight:900; }
+    .exam-meta { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }
+    .exam-meta span { display:inline-flex; align-items:center; min-height:28px; border:1px solid #c8d5e4; border-radius:6px; background:#f8fbff; color:#294564; padding:4px 8px; font-size:13px; font-weight:800; }
+    .exam-meta .focus { border-color:#e5bd72; background:#fff8e8; color:#7a4a0b; }
+    .source { margin:0 0 18px; padding:12px; border:1px solid #dbe6f1; border-radius:8px; background:#fbfdff; }
+    .source h4 { margin:0 0 8px; color:#294564; font-size:14px; }
+    .source ul { margin:6px 0 6px 18px; padding:0; }
+    .source li { margin:2px 0; }
+    .mini-table { width:100%; border-collapse:collapse; margin:8px 0; font-size:13px; }
+    .mini-table th, .mini-table td { border:1px solid var(--line); padding:6px 7px; vertical-align:top; }
+    .mini-table th { background:#e8f1f9; color:#183a5a; text-align:left; }
+    .question { border-top:1px solid var(--line); padding:18px 0 3px; }
+    .question:first-of-type { border-top:0; }
+    .stem { color:var(--muted); margin:0 0 10px; }
+    .fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .field { border:1px solid var(--line); background:#fbfdff; border-radius:8px; padding:10px; }
+    .field-note { margin:0 0 8px; padding:8px 10px; border-radius:6px; background:#eef2f7; color:#475569; font-size:13px; }
+    .stock-table { width:100%; border-collapse:collapse; margin-top:10px; font-size:13px; }
+    .stock-table th, .stock-table td { border:1px solid var(--line); padding:8px; vertical-align:top; }
+    .stock-table th { background:#e8f1f9; color:#183a5a; text-align:left; }
+    .stock-table select { min-width:105px; }
+    .excel-toolbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:0 0 10px; }
+    .excel-status { color:var(--muted); font-weight:800; }
+    .excel-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:#fff; }
+    .excel-table { width:100%; min-width:1100px; border-collapse:collapse; font-size:13px; }
+    .excel-table th, .excel-table td { border:1px solid #d6deea; padding:7px 8px; vertical-align:middle; white-space:nowrap; }
+    .excel-table th { background:#e8f1f9; color:#183a5a; text-align:left; }
+    .excel-table th.row-head, .excel-table td.row-head { width:64px; text-align:center; background:#f8fafc; color:#64748b; font-weight:800; }
+    .excel-table td.deleted { color:#94a3b8; text-decoration:line-through; background:#f8fafc; }
+    .excel-table .delete-row { min-width:34px; border:1px solid #cbd5e1; border-radius:6px; background:#fff; color:#b42318; font-weight:900; cursor:pointer; }
+    .excel-table .delete-row:disabled { color:#94a3b8; cursor:not-allowed; background:#f1f5f9; }
+    .excel-table .header-control { display:flex; align-items:center; gap:6px; }
+    .excel-table .header-control select { min-width:96px; min-height:30px; padding:3px 6px; }
+    .excel-table .sort-btn { border:1px solid #bdc9d8; border-radius:6px; background:#fff; color:var(--brand); font-weight:900; cursor:pointer; padding:4px 7px; }
+    .excel-table .sort-btn.active { border-color:var(--good); background:var(--good-bg); color:var(--good); }
+    label { display:block; margin:0 0 6px; font-weight:800; color:#24364f; }
+    select { width:100%; min-height:38px; padding:7px 9px; border:1px solid #bdc9d8; border-radius:6px; background:white; color:var(--ink); font:inherit; }
+    select.correct { border-color:var(--good); background:var(--good-bg); color:var(--good); }
+    select.wrong { border-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+    .chips { display:flex; flex-wrap:wrap; gap:8px; }
+    button.choice, button.ghost { border:1px solid #bdc9d8; background:white; border-radius:8px; padding:8px 10px; color:var(--ink); font:inherit; cursor:pointer; text-align:left; }
+    button.choice.selected.correct { border-color:var(--good); background:var(--good-bg); color:var(--good); font-weight:800; }
+    button.choice.selected.wrong { border-color:var(--bad); background:var(--bad-bg); color:var(--bad); font-weight:800; }
+    .feedback { margin-top:10px; min-height:24px; font-weight:800; }
+    .feedback.good { color:var(--good); }
+    .feedback.bad { color:var(--bad); }
+    .feedback.wait { color:var(--muted); }
+    .toolbar { display:flex; gap:8px; margin-top:10px; }
+    .page-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:14px; }
+    button.ghost { color:var(--brand); font-weight:800; }
+    .home-back {
+      display:inline-flex; align-items:center; justify-content:center;
+      min-height:36px; border:1px solid var(--line); border-radius:8px;
+      padding:0 12px; margin:0 0 8px; background:#fff; color:var(--brand);
+      font-weight:800; text-decoration:none;
+    }
+    .home-back:hover { border-color:var(--brand); background:#e8f1f9; }
+    @media (max-width:760px) {
+      .topbar { grid-template-columns:1fr; }
+      main { padding:16px; }
+      section { padding:16px; }
+      .fields { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <a class="home-back" href="./index.html">返回训练舱</a>
+        <h1>电子商务师（跨境电子商务师）五级实操互动练习</h1>
+      </div>
+      <div class="score">完成度 <strong id="scoreDone">0</strong>/<span id="scoreTotal">0</span></div>
+    </div>
+    <nav id="nav"></nav>
+  </header>
+  <main id="app"></main>
+
+  <script>
+    const quiz = [
+      {
+        id: "aa001",
+        title: "附件 A-A-001：商品资料信息",
+        taskCode: "A-A-001",
+        focus: "文字资料采编",
+        source: `
+          <h4>商品资料信息</h4>
+          <table class="mini-table"><tr><th>字段</th><th>内容</th></tr>
+          <tr><td>商品名称</td><td>北欧风格LED落地灯</td></tr>
+          <tr><td>颜色</td><td>黑色、白色</td></tr>
+          <tr><td>材质</td><td>金属 + 布艺灯罩</td></tr>
+          <tr><td>光源</td><td>LED（不可更换）</td></tr>
+          <tr><td>色温 / 功率</td><td>3000K暖白光 / 9瓦</td></tr>
+          <tr><td>高度 / 场景</td><td>150厘米 / 客厅、卧室、书房</td></tr>
+          <tr><td>主要特性 / 品牌</td><td>可调光、简约设计、节能 / 卢米纳家居</td></tr></table>
+          <h4>标题选项库</h4>
+          <ul><li>A. 卢米纳家居</li><li>B. 北欧风格LED落地灯</li><li>C. 可调光现代立灯</li><li>D. 9瓦节能灯</li><li>E. 客厅卧室书房适用</li><li>F. 黑色/白色</li><li>G. 热卖落地灯</li></ul>`,
+        questions: [
+          {
+            type: "fields",
+            title: "商品标题结构组合",
+            stem: "按照“核心产品关键词 + 主要特性 + 适用场景”的结构，从选项库中选择对应编号。",
+            context: "核心产品关键词要体现商品本体；主要特性要体现卖点；适用场景要体现使用环境。",
+            fields: [
+              { label: "核心产品关键词", answer: "B. 北欧风格LED落地灯", options: ["A. 卢米纳家居", "B. 北欧风格LED落地灯", "C. 可调光现代立灯", "E. 客厅卧室书房适用"] },
+              { label: "主要特性", answer: "C. 可调光现代立灯", options: ["B. 北欧风格LED落地灯", "C. 可调光现代立灯", "D. 9瓦节能灯", "G. 热卖落地灯"] },
+              { label: "适用场景", answer: "E. 客厅卧室书房适用", options: ["A. 卢米纳家居", "D. 9瓦节能灯", "E. 客厅卧室书房适用", "F. 黑色/白色"] }
+            ]
+          },
+          {
+            type: "fields",
+            title: "商品销售信息录入",
+            stem: "根据商品资料填写商品品牌、颜色、材质、光源、功率、场景和高度。",
+            context: "本题答案均来自上方“商品资料信息”，不要自由发挥。",
+            fields: [
+              { label: "商品品牌", answer: "卢米纳家居", options: ["卢米纳家居", "悦享智能", "悦动户外"] },
+              { label: "商品颜色", answer: "黑色、白色", options: ["黑色、白色", "银色", "黑色"] },
+              { label: "商品材质", answer: "金属 + 布艺灯罩", options: ["金属 + 布艺灯罩", "不锈钢机身 + 触控面板", "塑料"] },
+              { label: "光源类型", answer: "LED（不可更换）", options: ["LED（不可更换）", "自然光", "卤素灯"] },
+              { label: "功率", answer: "9瓦", options: ["9瓦", "1350W", "15巴"] },
+              { label: "适用场景", answer: "客厅、卧室、书房", options: ["客厅、卧室、书房", "家庭、办公室", "家庭、公寓"] },
+              { label: "商品高度", answer: "150厘米", options: ["150厘米", "1600像素", "1.5L"] }
+            ]
+          }
+        ]
+      },
+      {
+        id: "aa002",
+        title: "附件 A-A-002：产品图片拍摄",
+        taskCode: "A-A-002",
+        focus: "图片拍摄与处理",
+        source: `
+          <h4>平台图片拍摄规范</h4>
+          <ul>
+            <li>主图背景：纯白色背景（RGB 255,255,255），无阴影、无杂物。</li>
+            <li>产品占比：产品占画面85%以上，居中展示。</li>
+            <li>图片尺寸：至少1000×1000像素，推荐1600×1600像素；格式为JPEG或PNG。</li>
+            <li>禁止内容：不得包含文字、水印、Logo、促销信息、边框。</li>
+            <li>拍摄角度：主图为正面平视；辅图需包含侧面、背面、俯视、特写等角度。</li>
+            <li>布光方式：推荐两个45度角柔光箱；背景布为纯白色；相机推荐数码单反 + 三脚架；光圈f/8。</li>
+          </ul>
+          <h4>拍摄角度与图片规范判断说法</h4>
+          <table class="mini-table"><tr><th>编号</th><th>说法</th></tr><tr><td>1</td><td>智能语音台灯的主图应采用俯视角度拍摄</td></tr><tr><td>2</td><td>主图背景应使用纯白色，不得有杂物或阴影</td></tr></table>`,
+        questions: [
+          {
+            type: "fields",
+            title: "拍摄器材与布光方案选择",
+            stem: "请为本次产品拍摄选择合适的相机、辅助设备、光圈和布光方案。",
+            context: `<h4>拍摄器材与布光规范</h4><ul><li>相机推荐：数码单反相机，支持手动对焦。</li><li>辅助设备：使用三脚架保持画面稳定。</li><li>推荐光圈：f/8，中等光圈，产品整体清晰。</li><li>布光方式：两个45度角柔光箱，左前方+右前方。</li><li>背景要求：纯白色背景布（RGB 255,255,255）。</li><li>光线要求：使用柔光箱或反光板，保证光线均匀柔和。</li></ul>`,
+            fields: [
+              { label: "相机类型", answer: "B. 数码单反相机（支持手动对焦）", options: ["A. 手机（自动模式）", "B. 数码单反相机（支持手动对焦）"] },
+              { label: "必备辅助设备", answer: "C. 三脚架", options: ["C. 三脚架", "D. 手持拍摄"] },
+              { label: "推荐光圈设置", answer: "F. f/8（中等光圈，产品整体清晰）", options: ["E. f/2.8（大光圈，背景虚化）", "F. f/8（中等光圈，产品整体清晰）"] },
+              { label: "推荐布光方式", answer: "I. 两个45度角柔光箱（左前方+右前方）", options: ["H. 单灯正面直射", "I. 两个45度角柔光箱（左前方+右前方）"] },
+              { label: "背景要求", answer: "L. 纯白色背景布（RGB 255,255,255）", options: ["L. 纯白色背景布（RGB 255,255,255）", "M. 彩色渐变背景"] },
+              { label: "光线要求", answer: "J. 使用柔光箱或反光板，保证光线均匀柔和", options: ["J. 使用柔光箱或反光板，保证光线均匀柔和", "K. 使用裸灯直射，制造强烈阴影", "N. 自然光拍摄，无需补光"] }
+            ]
+          },
+          {
+            type: "fields",
+            title: "拍摄角度与图片规范判断",
+            stem: "判断两个说法是否符合规范，并选择对应理由。",
+            context: `<h4>平台图片拍摄规范</h4><ul><li>主图背景：纯白色背景（RGB 255,255,255），无阴影、无杂物。</li><li>产品占比：产品占画面85%以上，居中展示。</li><li>禁止内容：不得包含文字、水印、Logo、促销信息、边框。</li><li>拍摄角度：主图为正面平视；辅图需包含侧面、背面、俯视、特写等角度。</li></ul><h4>判断说法</h4><table class="mini-table"><tr><th>编号</th><th>说法</th></tr><tr><td>1</td><td>智能语音台灯的主图应采用俯视角度拍摄</td></tr><tr><td>2</td><td>主图背景应使用纯白色，不得有杂物或阴影</td></tr></table>`,
+            fields: [
+              { label: "说法1", answer: "否 / ② 错误，主图应使用正面平视角度，产品居中展示", options: ["是 / ① 正确，主图应使用正面平视角度，产品居中展示", "否 / ② 错误，主图应使用正面平视角度，产品居中展示", "是 / ⑤ 正确，侧面角度可展示产品厚度和轮廓"] },
+              { label: "说法2", answer: "是 / ③ 正确，纯白背景可避免干扰，突出产品", options: ["是 / ③ 正确，纯白背景可避免干扰，突出产品", "否 / ④ 错误，主图可以使用生活场景背景", "否 / ⑧ 错误，特写镜头会放大产品瑕疵"] }
+            ]
+          }
+        ]
+      },
+      {
+        id: "ab001",
+        title: "附件 A-B-001：店铺账户信息",
+        taskCode: "A-B-001",
+        focus: "跨境电商网店信息设置",
+        source: `
+          <h4>平台账户信息设置规范</h4>
+          <ul><li>店铺名称：品牌名称 + 官方旗舰店，不超过20个汉字。</li><li>客服邮箱：service@公司域名.com。</li><li>联系电话：包含国家代码，格式为“+区号 电话号码”。</li><li>经营地址：精确到具体门牌号。</li><li>增值税号：国家代码 + 数字。</li></ul>
+          <h4>账户资料</h4>
+          <table class="mini-table"><tr><th>字段</th><th>内容</th></tr><tr><td>品牌名称</td><td>悦动户外</td></tr><tr><td>统一社会信用代码</td><td>91440101MA5ABCDEFG</td></tr><tr><td>法人代表</td><td>张伟</td></tr><tr><td>注册地址</td><td>广东省广州市天河区体育西路123号悦动大厦8楼</td></tr><tr><td>联系电话</td><td>020-12345678</td></tr><tr><td>公司域名</td><td>yuedongoutdoor</td></tr><tr><td>国家代码 / 增值税号数字部分</td><td>DE / 123456789</td></tr><tr><td>银行</td><td>中国银行广州天河支行；账户名：悦动户外用品有限公司；账号：6013827000123456789；代码：BKCHCNBJ400</td></tr></table>`,
+        questions: [
+          {
+            type: "fields",
+            title: "店铺基本信息配置",
+            stem: "根据账户资料和平台账户信息设置规范选择正确选项。",
+            context: "本题对应原页面第1题：店铺名称、客服邮箱、客服电话、经营地址、增值税号。",
+            fields: [
+              { label: "店铺名称", answer: "悦动户外官方旗舰店", options: ["悦动户外", "悦动户外用品", "悦动户外官方旗舰店", "悦动户外旗舰店"] },
+              { label: "客服邮箱", answer: "service@yuedongoutdoor.com", options: ["service@yuedongoutdoor.com", "service@yuedong.com", "service@outdoor.com"] },
+              { label: "客服电话", answer: "+86 02012345678", options: ["+86 13812345678", "+86 02012345678", "+86 20 12345678"] },
+              { label: "经营地址", answer: "广东省广州市天河区体育西路123号悦动大厦8楼", options: ["广东省广州市天河区体育西路123号", "广州市天河区体育西路123号悦动大厦8楼", "广东省广州市天河区体育西路123号悦动大厦8楼"] },
+              { label: "增值税号", answer: "DE123456789", options: ["DE123456789", "123456789", "DE12345678"] }
+            ]
+          },
+          {
+            type: "fields",
+            title: "店铺经营及收款信息录入",
+            stem: "根据账户资料录入经营及收款信息。",
+            context: "原页面为输入框，本练习改为选择题，选项均来自账户资料或干扰项。",
+            fields: [
+              { label: "公司中文名称", answer: "悦动户外用品有限公司", options: ["悦动户外用品有限公司", "悦动户外", "卢米纳家居"] },
+              { label: "统一社会信用代码", answer: "91440101MA5ABCDEFG", options: ["91440101MA5ABCDEFG", "DE123456789", "BKCHCNBJ400"] },
+              { label: "银行账户名称", answer: "悦动户外用品有限公司", options: ["悦动户外用品有限公司", "中国银行广州天河支行", "张伟"] },
+              { label: "银行账号", answer: "6013827000123456789", options: ["6013827000123456789", "91440101MA5ABCDEFG", "020-12345678"] },
+              { label: "国际银行代码", answer: "BKCHCNBJ400", options: ["BKCHCNBJ400", "DE123456789", "U001"] },
+              { label: "收款银行名称", answer: "中国银行广州天河支行", options: ["中国银行广州天河支行", "悦动户外用品有限公司", "广东省广州市天河区体育西路123号"] },
+              { label: "法人代表姓名", answer: "张伟", options: ["张伟", "李伟", "王强"] }
+            ]
+          }
+        ]
+      },
+      {
+        id: "ab002",
+        title: "附件 A-B-002：商品标题撰写",
+        taskCode: "A-B-002",
+        focus: "跨境电商商品发布",
+        source: `
+          <h4>平台商品标题撰写规则</h4>
+          <ul><li>长度限制：80-120个字符（含空格）。</li><li>结构要求：品牌 + 核心关键词 + 关键属性 + 适用场景/人群。</li><li>大小写：每个单词首字母大写，介词、连词、冠词除外。</li><li>数字：必须使用阿拉伯数字。</li><li>禁止事项：促销用语（Hot Sale）、主观评价（Best）、特殊符号（★）、关键词堆砌、全大写。</li></ul>
+          <h4>智能咖啡机商品信息</h4>
+          <table class="mini-table"><tr><th>字段</th><th>内容</th></tr><tr><td>品牌 / 型号</td><td>悦享智能（Yuexiang Smart）/ YX-900</td></tr><tr><td>核心功能</td><td>24小时智能预约 / 一键制作浓缩、美式、拿铁 / 15巴高压萃取 / 自动清洗</td></tr><tr><td>规格</td><td>1.5L水箱 / 1350W / 不锈钢机身+触控面板</td></tr><tr><td>场景 / 人群</td><td>家庭、办公室 / 咖啡爱好者、职场人士</td></tr></table>
+          <h4>规则识别与判断标题</h4>
+          <table class="mini-table"><tr><th>编号</th><th>标题</th></tr><tr><td>1</td><td>YUEXIANG SMART 智能咖啡机 一键制作浓缩咖啡 24小时预约 家用办公</td></tr><tr><td>2</td><td>悦享智能 智能咖啡机 15巴高压萃取 自动清洗 家用办公</td></tr><tr><td>3</td><td>Best Smart Coffee Machine 2025 Hot Sale - Yuexiang Smart</td></tr><tr><td>4</td><td>Yuexiang Smart 智能咖啡机 ★ 24h预约 ★ 不锈钢机身 ★ 家用办公室用</td></tr><tr><td>5</td><td>悦享智能 智能咖啡机 全自动咖啡机 意式浓缩机 家用咖啡机 办公咖啡机</td></tr></table>
+          <p>错误类型：A.全大写；B.促销用语；C.主观评价词；D.特殊符号；E.关键词堆砌；F.中英文混杂；G.缺少核心要素。</p>
+          <h4>正确标题选择选项</h4>
+          <table class="mini-table"><tr><th>编号</th><th>标题内容</th></tr><tr><td>A</td><td>Yuexiang Smart 智能咖啡机 YX-900 24小时预约 15巴高压萃取 自动清洗 不锈钢机身 家用办公室用</td></tr><tr><td>B</td><td>YUEXIANG SMART COFFEE MAKER 智能咖啡机 24小时预约 15巴高压萃取 家用办公</td></tr><tr><td>C</td><td>悦享智能 智能咖啡机 全自动咖啡机 意式浓缩机 家用咖啡机 办公室咖啡机</td></tr><tr><td>D</td><td>Best Smart Coffee Maker 2025 - Yuexiang Smart 智能咖啡机 24小时预约 不锈钢机身</td></tr></table>
+          <h4>智能扫地机器人商品信息</h4>
+          <table class="mini-table"><tr><th>字段</th><th>内容</th></tr><tr><td>品牌 / 型号</td><td>悦享智能（Yuexiang Smart）/ YX-R2</td></tr><tr><td>核心功能</td><td>激光导航 / 4000Pa大吸力 / 自动回充 / 扫拖一体</td></tr><tr><td>适用场景 / 人群</td><td>家庭、公寓 / 养宠家庭、上班族</td></tr></table>`,
+        questions: [
+          {
+            type: "fields",
+            title: "规则识别与判断",
+            stem: "阅读5个标题，判断是否符合规则；不符合时选择错误类型。",
+            context: `<table class="mini-table"><tr><th>编号</th><th>标题</th></tr><tr><td>1</td><td>YUEXIANG SMART 智能咖啡机 一键制作浓缩咖啡 24小时预约 家用办公</td></tr><tr><td>2</td><td>悦享智能 智能咖啡机 15巴高压萃取 自动清洗 家用办公</td></tr><tr><td>3</td><td>Best Smart Coffee Machine 2025 Hot Sale - Yuexiang Smart</td></tr><tr><td>4</td><td>Yuexiang Smart 智能咖啡机 ★ 24h预约 ★ 不锈钢机身 ★ 家用办公室用</td></tr><tr><td>5</td><td>悦享智能 智能咖啡机 全自动咖啡机 意式浓缩机 家用咖啡机 办公咖啡机</td></tr></table><p>错误类型：A.全大写；B.促销用语；C.主观评价词；D.特殊符号；E.关键词堆砌；F.中英文混杂；G.缺少核心要素。</p>`,
+            fields: [
+              { label: "标题1", note: "YUEXIANG SMART 智能咖啡机 一键制作浓缩咖啡 24小时预约 家用办公", answer: "否 / A. 全大写", options: ["是 / 无错误类型", "否 / A. 全大写", "否 / B. 促销用语", "否 / E. 关键词堆砌"] },
+              { label: "标题2", note: "悦享智能 智能咖啡机 15巴高压萃取 自动清洗 家用办公", answer: "是 / 无错误类型", options: ["是 / 无错误类型", "否 / G. 缺少核心要素", "否 / E. 关键词堆砌", "否 / F. 中英文混杂"] },
+              { label: "标题3", note: "Best Smart Coffee Machine 2025 Hot Sale - Yuexiang Smart", answer: "否 / B. 促销用语", options: ["是 / 无错误类型", "否 / B. 促销用语", "否 / D. 特殊符号", "否 / G. 缺少核心要素"] },
+              { label: "标题4", note: "Yuexiang Smart 智能咖啡机 ★ 24h预约 ★ 不锈钢机身 ★ 家用办公室用", answer: "否 / D. 特殊符号", options: ["是 / 无错误类型", "否 / A. 全大写", "否 / D. 特殊符号", "否 / C. 主观评价词"] },
+              { label: "标题5", note: "悦享智能 智能咖啡机 全自动咖啡机 意式浓缩机 家用咖啡机 办公咖啡机", answer: "否 / E. 关键词堆砌", options: ["是 / 无错误类型", "否 / E. 关键词堆砌", "否 / B. 促销用语", "否 / D. 特殊符号"] }
+            ]
+          },
+          {
+            type: "single",
+            title: "正确标题选择",
+            stem: "从A-D中选择符合规则的商品标题。",
+            context: `<table class="mini-table"><tr><th>编号</th><th>标题内容</th></tr><tr><td>A</td><td>Yuexiang Smart 智能咖啡机 YX-900 24小时预约 15巴高压萃取 自动清洗 不锈钢机身 家用办公室用</td></tr><tr><td>B</td><td>YUEXIANG SMART COFFEE MAKER 智能咖啡机 24小时预约 15巴高压萃取 家用办公</td></tr><tr><td>C</td><td>悦享智能 智能咖啡机 全自动咖啡机 意式浓缩机 家用咖啡机 办公室咖啡机</td></tr><tr><td>D</td><td>Best Smart Coffee Maker 2025 - Yuexiang Smart 智能咖啡机 24小时预约 不锈钢机身</td></tr></table>`,
+            answer: "A. Yuexiang Smart 智能咖啡机 YX-900 24小时预约 15巴高压萃取 自动清洗 不锈钢机身 家用办公室用",
+            options: [
+              "A. Yuexiang Smart 智能咖啡机 YX-900 24小时预约 15巴高压萃取 自动清洗 不锈钢机身 家用办公室用",
+              "B. YUEXIANG SMART COFFEE MAKER 智能咖啡机 24小时预约 15巴高压萃取 家用办公",
+              "C. 悦享智能 智能咖啡机 全自动咖啡机 意式浓缩机 家用咖啡机 办公室咖啡机",
+              "D. Best Smart Coffee Maker 2025 - Yuexiang Smart 智能咖啡机 24小时预约 不锈钢机身"
+            ],
+            explanations: {
+              "B. YUEXIANG SMART COFFEE MAKER 智能咖啡机 24小时预约 15巴高压萃取 家用办公": "B项不符合：品牌和英文词组使用全大写，违反“每个单词首字母大写，禁止全大写”的规则。",
+              "C. 悦享智能 智能咖啡机 全自动咖啡机 意式浓缩机 家用咖啡机 办公室咖啡机": "C项不符合：多次重复“咖啡机”并堆叠近义关键词，违反“禁止关键词堆砌”的规则。",
+              "D. Best Smart Coffee Maker 2025 - Yuexiang Smart 智能咖啡机 24小时预约 不锈钢机身": "D项不符合：包含主观评价词 Best，且标题结构没有把品牌放在开头，不满足平台标题规则。"
+            }
+          },
+          {
+            type: "fields",
+            title: "标题片段组合选择",
+            stem: "根据智能扫地机器人商品信息，选择各标题片段。",
+            context: `<h4>智能扫地机器人商品信息</h4><table class="mini-table"><tr><th>字段</th><th>内容</th></tr><tr><td>品牌 / 型号</td><td>悦享智能（Yuexiang Smart）/ YX-R2</td></tr><tr><td>核心功能</td><td>激光导航 / 4000Pa大吸力 / 自动回充 / 扫拖一体</td></tr><tr><td>适用场景 / 人群</td><td>家庭、公寓 / 养宠家庭、上班族</td></tr></table>`,
+            fields: [
+              { label: "品牌", answer: "Yuexiang Smart", options: ["Yuexiang Smart", "悦享智能", "Best Robot", "YUEXIANG SMART"] },
+              { label: "核心关键词", answer: "智能扫地机器人", options: ["智能扫地机器人", "扫地机器人", "Robot Vacuum", "智能机器人"] },
+              { label: "型号", answer: "YX-R2", options: ["YX-R2", "型号YX-R2", "R2", "YX-R2 ★"] },
+              { label: "关键属性1", answer: "激光导航 4000Pa大吸力 自动回充", options: ["激光导航 4000Pa大吸力 自动回充", "激光导航 4000Pa大吸力 自动回充 扫拖一体", "激光导航、4000Pa吸力、自动回充、扫拖一体", "★ 激光导航 ★ 自动回充 ★"] },
+              { label: "关键属性2", answer: "扫拖一体", options: ["扫拖一体 静音设计", "扫拖一体", "静音设计 150分钟续航", "最佳扫拖一体"] },
+              { label: "适用场景", answer: "家庭公寓适用 养宠必备", options: ["家庭公寓适用 养宠必备", "家用 办公室用", "For Home Apartment Pet Friendly", "家庭 公寓 办公室"] }
+            ]
+          }
+        ]
+      },
+      {
+        id: "ac001",
+        title: "附件 A-C-001：订单状态筛选与处理",
+        taskCode: "A-C-001",
+        focus: "跨境电商订单基础操作",
+        source: `
+          <h4>平台订单状态定义</h4>
+          <ul><li>未付款：买家已下单但尚未完成支付。</li><li>已付款：买家已完成支付，等待卖家处理。</li><li>退款中：买家申请退款，等待卖家审核。</li><li>待审核：订单需人工审核。</li><li>待发货：订单已确认，等待备货发货。</li><li>已发货：已生成运单号，等待物流揽收。</li></ul>
+          <h4>今日待处理订单列表</h4>
+          <table class="mini-table"><tr><th>订单号</th><th>商品/SKU/数量</th><th>状态</th><th>备注</th></tr>
+          <tr><td>ORD-001</td><td>智能扫地机器人 / R2-BLK / 1</td><td>未付款</td><td>客户已咨询</td></tr>
+          <tr><td>ORD-002</td><td>智能空气净化器 / AP200-WH / 1</td><td>已付款</td><td>库存充足</td></tr>
+          <tr><td>ORD-003</td><td>智能台灯 / L10-SL / 2</td><td>已付款</td><td>库存充足</td></tr>
+          <tr><td>ORD-004</td><td>智能扫地机器人 / R2-GRY / 1</td><td>待审核</td><td>金额较大，需风控审核</td></tr>
+          <tr><td>ORD-005</td><td>智能空气净化器 / AP200-BK / 1</td><td>未付款</td><td>-</td></tr>
+          <tr><td>ORD-006</td><td>智能扫地机器人 / R2-BLK / 1</td><td>已付款</td><td>库存充足</td></tr>
+          <tr><td>ORD-007</td><td>智能台灯 / L10-BK / 3</td><td>待发货</td><td>需打包发货</td></tr>
+          <tr><td>ORD-008</td><td>智能空气净化器 / AP200-WH / 2</td><td>退款中</td><td>客户反馈商品问题</td></tr>
+          <tr><td>ORD-009</td><td>智能扫地机器人 / R2-WHT / 1</td><td>已付款</td><td>库存充足</td></tr>
+          <tr><td>ORD-010</td><td>智能台灯 / L10-SL / 1</td><td>已发货</td><td>物流单号已生成</td></tr></table>
+          <h4>店铺商品库存信息</h4>
+          <table class="mini-table"><tr><th>商品名称</th><th>SKU</th><th>库存数量</th><th>价格（美元）</th></tr><tr><td>智能空气净化器 ZX-AP200</td><td>AP200-BK</td><td>50件</td><td>299.99</td></tr><tr><td>智能空气净化器 ZX-AP200</td><td>AP200-WH</td><td>30件</td><td>299.99</td></tr><tr><td>智能扫地机器人 ZX-R2</td><td>R2-BLK</td><td>25件</td><td>399.99</td></tr><tr><td>智能扫地机器人 ZX-R2</td><td>R2-WHT</td><td>20件</td><td>399.99</td></tr><tr><td>智能扫地机器人 ZX-R2</td><td>R2-GRY</td><td>15件</td><td>399.99</td></tr><tr><td>智能台灯 ZX-L10</td><td>L10-SL</td><td>80件</td><td>89.99</td></tr><tr><td>智能台灯 ZX-L10</td><td>L10-BK</td><td>60件</td><td>89.99</td></tr></table>
+          <h4>退款订单处理选项库</h4>
+          <p>关键信息选项库：A.商品质量问题的具体情况和证据；B.商品是否已使用及包装完整性；C.退款金额是否合理；D.客户购买时的支付方式；E.退货物流方式和运费承担方；F.客户是否为店铺会员。</p>
+          <p>处理建议选项库：①要求客户提供照片或视频；②告知退款流程；③根据实际状况确定退款金额；④确认是否符合退换货条件；⑤质量问题由卖家承担退货运费；⑥主动沟通了解具体问题。</p>`,
+        questions: [
+          { type: "multi", title: "需要催付的订单", stem: "选择当前状态为“未付款”的订单。", context: `<h4>订单状态表</h4><table class="mini-table"><tr><th>订单号</th><th>状态</th></tr><tr><td>ORD-001</td><td>未付款</td></tr><tr><td>ORD-002</td><td>已付款</td></tr><tr><td>ORD-003</td><td>已付款</td></tr><tr><td>ORD-004</td><td>待审核</td></tr><tr><td>ORD-005</td><td>未付款</td></tr><tr><td>ORD-006</td><td>已付款</td></tr><tr><td>ORD-007</td><td>待发货</td></tr><tr><td>ORD-008</td><td>退款中</td></tr><tr><td>ORD-009</td><td>已付款</td></tr><tr><td>ORD-010</td><td>已发货</td></tr></table>`, answers: ["ORD-001", "ORD-005"], options: ["ORD-001", "ORD-002", "ORD-003", "ORD-004", "ORD-005", "ORD-006", "ORD-007", "ORD-008", "ORD-009", "ORD-010"], explanations: { "ORD-002": "ORD-002 是已付款订单，不属于催付范围。", "ORD-003": "ORD-003 是已付款订单，不需要催付。", "ORD-004": "ORD-004 是待审核订单，应进入审核处理。", "ORD-006": "ORD-006 是已付款订单，不需要催付。", "ORD-007": "ORD-007 是待发货订单，应处理发货。", "ORD-008": "ORD-008 是退款中订单，应处理退款。", "ORD-009": "ORD-009 是已付款订单，不需要催付。", "ORD-010": "ORD-010 是已发货订单，不需要催付。" } },
+          { type: "multi", title: "需要发货的订单", stem: "选择需要卖家处理发货的订单。", context: `<h4>订单状态与备注</h4><table class="mini-table"><tr><th>订单号</th><th>状态</th><th>备注</th></tr><tr><td>ORD-001</td><td>未付款</td><td>客户已咨询</td></tr><tr><td>ORD-002</td><td>已付款</td><td>库存充足</td></tr><tr><td>ORD-003</td><td>已付款</td><td>库存充足</td></tr><tr><td>ORD-004</td><td>待审核</td><td>金额较大，需风控审核</td></tr><tr><td>ORD-005</td><td>未付款</td><td>-</td></tr><tr><td>ORD-006</td><td>已付款</td><td>库存充足</td></tr><tr><td>ORD-007</td><td>待发货</td><td>需打包发货</td></tr><tr><td>ORD-008</td><td>退款中</td><td>客户反馈商品问题</td></tr><tr><td>ORD-009</td><td>已付款</td><td>库存充足</td></tr><tr><td>ORD-010</td><td>已发货</td><td>物流单号已生成</td></tr></table>`, answers: ["ORD-002", "ORD-003", "ORD-006", "ORD-007", "ORD-009"], options: ["ORD-001", "ORD-002", "ORD-003", "ORD-004", "ORD-005", "ORD-006", "ORD-007", "ORD-008", "ORD-009", "ORD-010"], explanations: { "ORD-001": "ORD-001 未付款，应先催付，不能发货。", "ORD-004": "ORD-004 待审核，应先完成审核。", "ORD-005": "ORD-005 未付款，应先催付，不能发货。", "ORD-008": "ORD-008 退款中，应处理退款。", "ORD-010": "ORD-010 已发货，不需要重复发货。" } },
+          {
+            type: "fields",
+            title: "需要审核的订单",
+            stem: "选择人工审核订单和审核原因。",
+            context: `<h4>候选订单状态与备注</h4><table class="mini-table"><tr><th>订单号</th><th>状态</th><th>备注</th></tr><tr><td>ORD-001</td><td>未付款</td><td>客户已咨询</td></tr><tr><td>ORD-004</td><td>待审核</td><td>金额较大，需风控审核</td></tr><tr><td>ORD-008</td><td>退款中</td><td>客户反馈商品问题</td></tr><tr><td>ORD-010</td><td>已发货</td><td>物流单号已生成</td></tr></table>`,
+            fields: [
+              { label: "订单号", answer: "ORD-004", explanation: "订单列表中 ORD-004 的状态是“待审核”，需要人工审核。", options: ["ORD-001", "ORD-004", "ORD-008", "ORD-010"] },
+              { label: "审核原因", answer: "金额较大，需风控审核", explanation: "ORD-004 的备注写明“金额较大，需风控审核”，所以审核原因应选这一项。", options: ["金额较大，需风控审核", "客户反馈商品问题", "物流单号已生成", "客户已咨询"] }
+            ]
+          },
+          {
+            type: "stock",
+            title: "库存处理模块",
+            stem: "根据店铺商品库存信息，核对订单 SKU 的库存数量，选择是否充足并填写备注。",
+            context: `<h4>店铺商品库存信息</h4><table class="mini-table"><tr><th>商品名称</th><th>SKU</th><th>库存数量</th><th>价格（美元）</th></tr><tr><td>智能空气净化器 ZX-AP200</td><td>AP200-BK</td><td>50件</td><td>299.99</td></tr><tr><td>智能空气净化器 ZX-AP200</td><td>AP200-WH</td><td>30件</td><td>299.99</td></tr><tr><td>智能扫地机器人 ZX-R2</td><td>R2-BLK</td><td>25件</td><td>399.99</td></tr><tr><td>智能扫地机器人 ZX-R2</td><td>R2-WHT</td><td>20件</td><td>399.99</td></tr><tr><td>智能扫地机器人 ZX-R2</td><td>R2-GRY</td><td>15件</td><td>399.99</td></tr><tr><td>智能台灯 ZX-L10</td><td>L10-SL</td><td>80件</td><td>89.99</td></tr><tr><td>智能台灯 ZX-L10</td><td>L10-BK</td><td>60件</td><td>89.99</td></tr></table><h4>需要核对库存的订单</h4><table class="mini-table"><tr><th>订单号</th><th>商品名称</th><th>SKU</th><th>订单数量</th></tr><tr><td>ORD-002</td><td>智能空气净化器</td><td>AP200-WH</td><td>1</td></tr><tr><td>ORD-006</td><td>智能扫地机器人</td><td>R2-BLK</td><td>1</td></tr><tr><td>ORD-007</td><td>智能台灯</td><td>L10-BK</td><td>3</td></tr></table>`,
+            rows: [
+              { orderId: "ORD-002", product: "智能空气净化器", sku: "AP200-WH", qty: "1", stockAnswer: "30", enoughAnswer: "是", noteAnswer: "库存充足", stockOptions: ["30", "50", "20"], noteOptions: ["库存充足", "库存不足，需补货", "SKU不匹配"] },
+              { orderId: "ORD-006", product: "智能扫地机器人", sku: "R2-BLK", qty: "1", stockAnswer: "25", enoughAnswer: "是", noteAnswer: "库存充足", stockOptions: ["25", "15", "20"], noteOptions: ["库存充足", "库存不足，需补货", "SKU不匹配"] },
+              { orderId: "ORD-007", product: "智能台灯", sku: "L10-BK", qty: "3", stockAnswer: "60", enoughAnswer: "是", noteAnswer: "库存充足", stockOptions: ["60", "80", "3"], noteOptions: ["库存充足", "库存不足，需补货", "SKU不匹配"] }
+            ]
+          },
+          {
+            type: "fields",
+            title: "退款订单处理",
+            stem: "为 ORD-008 退款中订单选择需要确认的关键信息和处理建议。",
+            context: `<h4>退款订单信息</h4><table class="mini-table"><tr><th>订单号</th><th>商品/SKU/数量</th><th>状态</th><th>备注</th></tr><tr><td>ORD-008</td><td>智能空气净化器 / AP200-WH / 2</td><td>退款中</td><td>客户反馈商品问题</td></tr></table><h4>退款订单处理选项库</h4><p>关键信息选项库：A.商品质量问题的具体情况和证据；B.商品是否已使用及包装完整性；C.退款金额是否合理；D.客户购买时的支付方式；E.退货物流方式和运费承担方；F.客户是否为店铺会员。</p><p>处理建议选项库：①要求客户提供照片或视频；②告知退款流程；③根据实际状况确定退款金额；④确认是否符合退换货条件；⑤质量问题由卖家承担退货运费；⑥主动沟通了解具体问题。</p>`,
+            fields: [
+              { label: "关键信息1", answer: "A. 商品质量问题的具体情况和证据", options: ["A. 商品质量问题的具体情况和证据", "D. 客户购买时的支付方式", "F. 客户是否为店铺会员"] },
+              { label: "处理建议1", answer: "① 要求客户提供商品问题的照片或视频，确认问题属实后同意退款", options: ["① 要求客户提供商品问题的照片或视频，确认问题属实后同意退款", "② 告知客户退款流程，引导客户在线提交退款申请", "⑥ 主动与客户沟通，了解具体问题并提供解决方案"] },
+              { label: "关键信息2", answer: "B. 商品是否已使用及包装完整性", options: ["B. 商品是否已使用及包装完整性", "C. 退款金额是否合理", "F. 客户是否为店铺会员"] },
+              { label: "处理建议2", answer: "④ 确认客户是否符合退换货条件（如购买时间、使用情况）", options: ["③ 根据商品实际状况确定退款金额", "④ 确认客户是否符合退换货条件（如购买时间、使用情况）", "② 告知客户退款流程"] },
+              { label: "关键信息3", answer: "E. 退货物流方式和运费承担方", options: ["C. 退款金额是否合理", "E. 退货物流方式和运费承担方", "D. 客户购买时的支付方式"] },
+              { label: "处理建议3", answer: "⑤ 质量问题由卖家承担退货运费，向客户提供退货地址和退货流程", options: ["⑤ 质量问题由卖家承担退货运费，向客户提供退货地址和退货流程", "② 告知客户退款流程", "③ 根据商品实际状况确定退款金额"] }
+            ]
+          }
+        ]
+      },
+      {
+        id: "ac002",
+        title: "附件 A-C-002：物流方式与发货操作",
+        taskCode: "A-C-002",
+        focus: "跨境电商商品发货处理",
+        source: `
+          <h4>物流方式选择决策要素</h4>
+          <ul><li>高价值商品（>100美元）、时效要求高 → 国际快递。</li><li>常规商品、追求性价比 → 专线物流。</li><li>轻小件（<2kg）、低价值商品 → 邮政小包。</li><li>热销品、大件商品、批量备货 → 海外仓代发。</li><li>含电池、液体、粉末等敏感货 → 敏感货专线。</li></ul>
+          <h4>物流题订单信息</h4>
+          <table class="mini-table"><tr><th>订单号</th><th>商品</th><th>重量</th><th>品类特性</th><th>数量</th><th>订单金额</th><th>客户时效要求</th></tr><tr><td>ORD-301</td><td>智能扫地机器人</td><td>3.2kg</td><td>含锂电池</td><td>1</td><td>399.99美元</td><td>3天内送达</td></tr><tr><td>ORD-302</td><td>智能台灯</td><td>1.2kg</td><td>普货</td><td>2</td><td>179.98美元</td><td>性价比优先</td></tr><tr><td>ORD-303</td><td>滤网配件</td><td>0.3kg</td><td>普货</td><td>3</td><td>149.97美元</td><td>7天内送达</td></tr><tr><td>ORD-304</td><td>智能空气净化器</td><td>5.2kg</td><td>普货</td><td>1</td><td>299.99美元</td><td>性价比优先</td></tr><tr><td>ORD-305</td><td>智能扫地机器人</td><td>3.2kg</td><td>含锂电池</td><td>5</td><td>1999.95美元</td><td>批量订单，需本地快速发货</td></tr><tr><td>ORD-306</td><td>智能插座</td><td>0.15kg</td><td>普货</td><td>10</td><td>199.90美元</td><td>时效不敏感，成本优先</td></tr></table>
+          <h4>物流方式选项库</h4>
+          <p>A.国际快递；B.专线物流；C.邮政小包；D.海外仓代发；E.敏感货专线。</p>
+          <h4>发货操作理由选项库</h4>
+          <p>①发货后需在后台填写运单号并确认发货；②应先打印面单、打包商品，再联系物流商取件；③应在发货后立即填写运单号，避免订单超时；④确认发货应在发货后操作，而非发货前。</p>`,
+        questions: [
+          {
+            type: "fields",
+            title: "物流方式选择",
+            stem: "根据订单信息选择物流方式。",
+            context: `<h4>物流方式选择决策要素</h4><ul><li>高价值商品（>100美元）、时效要求高 → 国际快递。</li><li>常规商品、追求性价比 → 专线物流。</li><li>轻小件（<2kg）、低价值商品 → 邮政小包。</li><li>热销品、大件商品、批量备货 → 海外仓代发。</li><li>含电池、液体、粉末等敏感货 → 敏感货专线。</li></ul><h4>物流题订单信息</h4><table class="mini-table"><tr><th>订单号</th><th>商品</th><th>重量</th><th>品类特性</th><th>数量</th><th>订单金额</th><th>客户时效要求</th></tr><tr><td>ORD-301</td><td>智能扫地机器人</td><td>3.2kg</td><td>含锂电池</td><td>1</td><td>399.99美元</td><td>3天内送达</td></tr><tr><td>ORD-302</td><td>智能台灯</td><td>1.2kg</td><td>普货</td><td>2</td><td>179.98美元</td><td>性价比优先</td></tr><tr><td>ORD-303</td><td>滤网配件</td><td>0.3kg</td><td>普货</td><td>3</td><td>149.97美元</td><td>7天内送达</td></tr><tr><td>ORD-304</td><td>智能空气净化器</td><td>5.2kg</td><td>普货</td><td>1</td><td>299.99美元</td><td>性价比优先</td></tr><tr><td>ORD-305</td><td>智能扫地机器人</td><td>3.2kg</td><td>含锂电池</td><td>5</td><td>1999.95美元</td><td>批量订单，需本地快速发货</td></tr><tr><td>ORD-306</td><td>智能插座</td><td>0.15kg</td><td>普货</td><td>10</td><td>199.90美元</td><td>时效不敏感，成本优先</td></tr></table><h4>物流方式选项库</h4><p>A.国际快递；B.专线物流；C.邮政小包；D.海外仓代发；E.敏感货专线。</p>`,
+            fields: [
+              { label: "ORD-301", answer: "E. 敏感货专线", explanation: "ORD-301 含锂电池，属于敏感货；虽然有3天时效要求，但敏感货优先走敏感货专线。", options: ["A. 国际快递", "B. 专线物流", "D. 海外仓代发", "E. 敏感货专线"] },
+              { label: "ORD-302", answer: "B. 专线物流", explanation: "ORD-302 是普货，客户要求是“性价比优先”，符合“常规商品、追求性价比 → 专线物流”。", options: ["A. 国际快递", "B. 专线物流", "C. 邮政小包", "D. 海外仓代发"] },
+              { label: "ORD-303", answer: "C. 邮政小包", explanation: "ORD-303 是0.3kg滤网配件，属于轻小件，按题目物流规则选择邮政小包。", options: ["A. 国际快递", "B. 专线物流", "C. 邮政小包", "E. 敏感货专线"] },
+              { label: "ORD-304", answer: "B. 专线物流", explanation: "ORD-304 是普货，客户要求是“性价比优先”；它不是敏感货，也不是批量本地快速发货场景，所以选专线物流。", options: ["A. 国际快递", "B. 专线物流", "C. 邮政小包", "D. 海外仓代发"] },
+              { label: "ORD-305", answer: "D. 海外仓代发", explanation: "ORD-305 是批量订单，且要求本地快速发货，符合“热销品、大件商品、批量备货 → 海外仓代发”的处理场景。", options: ["A. 国际快递", "B. 专线物流", "D. 海外仓代发", "E. 敏感货专线"] },
+              { label: "ORD-306", answer: "C. 邮政小包", explanation: "ORD-306 是0.15kg轻小件，且时效不敏感、成本优先，符合邮政小包的低成本场景。", options: ["A. 国际快递", "B. 专线物流", "C. 邮政小包", "E. 敏感货专线"] }
+            ]
+          },
+          {
+            type: "fields",
+            title: "发货操作判断",
+            stem: "判断发货操作是否符合规范，并选择理由编号。",
+            context: `<h4>发货操作</h4><table class="mini-table"><tr><th>编号</th><th>操作说法</th></tr><tr><td>操作1</td><td>先联系物流商上门取件，再打印面单打包商品</td></tr><tr><td>操作2</td><td>商品打包后填写运单号并确认发货</td></tr><tr><td>操作3</td><td>发货后3天才填写运单号</td></tr><tr><td>操作4</td><td>发货前将订单状态改为已发货</td></tr></table><h4>理由选项库</h4><p>①发货后需在后台填写运单号并确认发货；②应先打印面单、打包商品，再联系物流商取件；③应在发货后立即填写运单号，避免订单超时；④确认发货应在发货后操作，而非发货前。</p>`,
+            fields: [
+              { label: "操作1：先联系物流商上门取件，再打印面单打包商品", answer: "否 / ②", explanation: "流程顺序不对，应先打印面单、打包商品，再联系物流商取件。", options: ["是 / ①", "否 / ②", "否 / ③", "否 / ④"] },
+              { label: "操作2：商品打包后填写运单号并确认发货", answer: "是 / ①", explanation: "商品打包并发货后，需要在后台填写运单号并确认发货。", options: ["是 / ①", "否 / ②", "否 / ③", "否 / ④"] },
+              { label: "操作3：发货后3天才填写运单号", answer: "否 / ③", explanation: "发货后应立即填写运单号，延迟3天可能导致订单超时或物流信息异常。", options: ["是 / ①", "否 / ②", "否 / ③", "否 / ④"] },
+              { label: "操作4：发货前将订单状态改为已发货", answer: "否 / ④", explanation: "确认发货应在实际发货后操作，不能在发货前提前改为已发货。", options: ["是 / ①", "否 / ②", "否 / ③", "否 / ④"] }
+            ]
+          }
+        ]
+      },
+      {
+        id: "ad002",
+        title: "附件 A-D-002：网店电子商务基础数据",
+        taskCode: "A-D-002",
+        focus: "电子商务数据整理",
+        source: `
+          <h4>表格题目要求</h4>
+          <ul><li>找出重复订单号并删除。</li><li>去重后筛选“已完成”状态订单。</li><li>对筛选结果按“单价”进行“升序排序”。</li></ul>`,
+        questions: [
+          {
+            type: "excel",
+            title: "Excel基本操作：去重、筛选与排序",
+            stem: "请像操作 Excel 一样整理订单数据：删除重复订单号的多余行，在“状态”列筛选“已完成”，再按“单价”升序排序。",
+            context: `<h4>表格题目要求</h4><ul><li>找出重复订单号并删除多余行，同一订单号保留一条。</li><li>在“状态”列下拉筛选“已完成”状态订单。</li><li>对筛选结果按“单价”进行“升序排序”。</li></ul>`,
+            rows: [
+              { uid: "r1", orderId: "ORD-001", date: "2026/3/1", product: "智能扫地机器人", price: 399.99, qty: 1, orderAmount: 399.99, paymentAmount: 399.99, status: "已完成", buyerId: "U001" },
+              { uid: "r2", orderId: "ORD-001", date: "2026/3/1", product: "智能扫地机器人", price: 399.99, qty: 1, orderAmount: 399.99, paymentAmount: 399.99, status: "已完成", buyerId: "U001" },
+              { uid: "r3", orderId: "ORD-002", date: "2026/3/2", product: "智能空气净化器", price: 299.99, qty: 1, orderAmount: 299.99, paymentAmount: 299.99, status: "已发货", buyerId: "U002" },
+              { uid: "r4", orderId: "ORD-003", date: "2026/3/3", product: "智能台灯", price: 89.99, qty: 2, orderAmount: 179.98, paymentAmount: 179.98, status: "已完成", buyerId: "U003" },
+              { uid: "r5", orderId: "ORD-003", date: "2026/3/3", product: "智能台灯", price: 89.99, qty: 2, orderAmount: 179.98, paymentAmount: 179.98, status: "已完成", buyerId: "U003" },
+              { uid: "r6", orderId: "ORD-004", date: "2026/3/4", product: "智能插座", price: 29.99, qty: 3, orderAmount: 89.97, paymentAmount: 0, status: "已取消", buyerId: "U004" },
+              { uid: "r7", orderId: "ORD-005", date: "2026/3/5", product: "智能扫地机器人", price: 399.99, qty: 1, orderAmount: 399.99, paymentAmount: 399.99, status: "已完成", buyerId: "U001" },
+              { uid: "r8", orderId: "ORD-006", date: "2026/3/6", product: "智能空气净化器", price: 299.99, qty: 2, orderAmount: 599.98, paymentAmount: 599.98, status: "待发货", buyerId: "U005" },
+              { uid: "r9", orderId: "ORD-006", date: "2026/3/6", product: "智能空气净化器", price: 299.99, qty: 2, orderAmount: 599.98, paymentAmount: 599.98, status: "待发货", buyerId: "U005" },
+              { uid: "r10", orderId: "ORD-007", date: "2026/3/7", product: "智能台灯", price: 89.99, qty: 1, orderAmount: 89.99, paymentAmount: 0, status: "退款中", buyerId: "U006" }
+            ],
+            expectedVisibleOrder: ["ORD-003", "ORD-001", "ORD-005"]
+          }
+        ]
+      }
+    ];
+
+    const app = document.getElementById("app");
+    const nav = document.getElementById("nav");
+    const state = new Map();
+    const pages = quiz.flatMap((group, gi) => group.questions.map((question, qi) => ({ group, question, gi, qi })));
+    let currentPage = 0;
+    const keyFor = (gi, qi) => `${gi}-${qi}`;
+    const normalizeSet = values => [...values].sort().join("||");
+    const isFieldCorrect = (question, values) => question.fields.every((field, index) => values[index] === field.answer);
+
+    function updateScore() {
+      let total = 0, done = 0;
+      quiz.forEach((group, gi) => group.questions.forEach((question, qi) => {
+        total += 1;
+        const value = state.get(keyFor(gi, qi));
+        if (!value) return;
+        if (question.type === "multi" && normalizeSet(value) === normalizeSet(question.answers)) done += 1;
+        if (question.type === "single" && value === question.answer) done += 1;
+        if (question.type === "fields" && isFieldCorrect(question, value)) done += 1;
+        if (question.type === "stock" && isStockCorrect(question, value)) done += 1;
+        if (question.type === "excel" && isExcelCorrect(question, value)) done += 1;
+      }));
+      document.getElementById("scoreDone").textContent = done;
+      document.getElementById("scoreTotal").textContent = total;
+    }
+
+    function setFeedback(container, cls, text) {
+      const feedback = container.querySelector(".feedback");
+      feedback.className = `feedback ${cls}`;
+      feedback.textContent = text;
+    }
+
+    function initQuestionState(question, gi, qi) {
+      const key = keyFor(gi, qi);
+      if (state.has(key)) return;
+      if (question.type === "fields") state.set(key, new Array(question.fields.length).fill(""));
+      if (question.type === "single") state.set(key, "");
+      if (question.type === "multi") state.set(key, new Set());
+      if (question.type === "stock") state.set(key, question.rows.map(() => ({ stock: "", enough: "", note: "" })));
+      if (question.type === "excel") state.set(key, {
+        rows: question.rows.map(row => ({ ...row })),
+        statusFilter: "全部",
+        priceSort: "",
+        lastDeleted: null
+      });
+    }
+
+    function isQuestionDone(question, gi, qi) {
+      const value = state.get(keyFor(gi, qi));
+      if (!value) return false;
+      if (question.type === "multi") return normalizeSet(value) === normalizeSet(question.answers);
+      if (question.type === "single") return value === question.answer;
+      if (question.type === "fields") return isFieldCorrect(question, value);
+      if (question.type === "stock") return isStockCorrect(question, value);
+      if (question.type === "excel") return isExcelCorrect(question, value);
+      return false;
+    }
+
+    function isStockCorrect(question, values) {
+      return question.rows.every((row, index) => {
+        const value = values[index] || {};
+        return value.stock === row.stockAnswer && value.enough === row.enoughAnswer && value.note === row.noteAnswer;
+      });
+    }
+
+    function visibleExcelRows(value) {
+      return value.rows.filter(row => value.statusFilter === "全部" || row.status === value.statusFilter);
+    }
+
+    function duplicateOrderIds(rows) {
+      const counts = rows.reduce((map, row) => {
+        map[row.orderId] = (map[row.orderId] || 0) + 1;
+        return map;
+      }, {});
+      return Object.keys(counts).filter(orderId => counts[orderId] > 1);
+    }
+
+    function isExcelCorrect(question, value) {
+      const noDuplicates = duplicateOrderIds(value.rows).length === 0;
+      const visibleOrder = visibleExcelRows(value).map(row => row.orderId).join("||");
+      return noDuplicates
+        && value.statusFilter === "已完成"
+        && value.priceSort === "asc"
+        && visibleOrder === question.expectedVisibleOrder.join("||");
+    }
+
+    function materialFor(group, question) {
+      const titleRule = `<h4>平台商品标题撰写规则</h4><ul><li>长度限制：80-120个字符（含空格）。</li><li>结构要求：品牌 + 核心关键词 + 关键属性 + 适用场景/人群。</li><li>大小写：每个单词首字母大写，介词、连词、冠词除外。</li><li>数字：必须使用阿拉伯数字。</li><li>禁止事项：促销用语、主观评价词、特殊符号、关键词堆砌、全大写。</li></ul>`;
+      if (group.id === "ab002" && question.title === "规则识别与判断") return titleRule + `<h4>规则识别与判断标题</h4>` + question.context;
+      if (group.id === "ab002" && question.title === "正确标题选择") return titleRule + `<h4>正确标题选择选项</h4>` + question.context;
+      if (group.id === "ab002" && question.context) return titleRule + question.context;
+      if (question.context && /<table|<h4|选项库|说法|库存信息|标题/.test(question.context)) return question.context;
+      return group.source;
+    }
+
+    function examLabel(group) {
+      return group.taskCode;
+    }
+
+    function renderFields(question, gi, qi, container) {
+      initQuestionState(question, gi, qi);
+      const values = state.get(keyFor(gi, qi));
+      const fields = document.createElement("div");
+      fields.className = "fields";
+      question.fields.forEach((field, index) => {
+        const wrap = document.createElement("div");
+        wrap.className = "field";
+        const label = document.createElement("label");
+        label.textContent = field.label;
+        wrap.appendChild(label);
+        if (field.note) {
+          const note = document.createElement("div");
+          note.className = "field-note";
+          note.textContent = field.note;
+          wrap.appendChild(note);
+        }
+        const select = document.createElement("select");
+        select.innerHTML = `<option value="">请选择</option>` + field.options.map(option => `<option value="${escapeAttr(option)}">${escapeHtml(option)}</option>`).join("");
+        select.value = values[index] || "";
+        if (select.value === field.answer) select.classList.add("correct");
+        else if (select.value) select.classList.add("wrong");
+        select.addEventListener("change", () => {
+          values[index] = select.value;
+          select.classList.remove("correct", "wrong");
+          if (!select.value) setFeedback(container, "wait", "继续选择。");
+          else if (select.value === field.answer) {
+            select.classList.add("correct");
+            setFeedback(container, isFieldCorrect(question, values) ? "good" : "wait", isFieldCorrect(question, values) ? "本题全部正确。" : "这个选项正确，继续完成本题。");
+          } else {
+            select.classList.add("wrong");
+            const detail = field.explanation ? `${field.explanation} 正确答案：${field.answer}` : `这个选项不对。正确答案：${field.answer}`;
+            setFeedback(container, "bad", detail);
+          }
+          updateScore();
+        });
+        wrap.appendChild(select);
+        fields.appendChild(wrap);
+      });
+      container.appendChild(fields);
+    }
+
+    function renderSingle(question, gi, qi, container) {
+      initQuestionState(question, gi, qi);
+      const selectedValue = state.get(keyFor(gi, qi));
+      const chips = document.createElement("div");
+      chips.className = "chips";
+      question.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "choice";
+        btn.textContent = option;
+        if (selectedValue === option) btn.classList.add("selected", option === question.answer ? "correct" : "wrong");
+        btn.addEventListener("click", () => {
+          chips.querySelectorAll("button").forEach(b => b.className = "choice");
+          state.set(keyFor(gi, qi), option);
+          btn.classList.add("selected", option === question.answer ? "correct" : "wrong");
+          const wrongText = question.explanations && question.explanations[option] ? question.explanations[option] : `回答错误。正确答案：${question.answer}`;
+          setFeedback(container, option === question.answer ? "good" : "bad", option === question.answer ? "回答正确。" : wrongText);
+          updateScore();
+        });
+        chips.appendChild(btn);
+      });
+      container.appendChild(chips);
+    }
+
+    function renderStock(question, gi, qi, container) {
+      initQuestionState(question, gi, qi);
+      const values = state.get(keyFor(gi, qi));
+      const table = document.createElement("table");
+      table.className = "stock-table";
+      table.innerHTML = `<thead><tr><th>订单号</th><th>商品名称</th><th>SKU</th><th>订单数量</th><th>库存数量</th><th>是否充足</th><th>备注</th></tr></thead>`;
+      const tbody = document.createElement("tbody");
+      question.rows.forEach((row, index) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${escapeHtml(row.orderId)}</td><td>${escapeHtml(row.product)}</td><td>${escapeHtml(row.sku)}</td><td>${escapeHtml(row.qty)}</td>`;
+
+        const stockCell = document.createElement("td");
+        const stockSelect = makeSelect(row.stockOptions, values[index].stock);
+        const enoughCell = document.createElement("td");
+        const enoughSelect = makeSelect(["是", "否"], values[index].enough);
+        const noteCell = document.createElement("td");
+        const noteSelect = makeSelect(row.noteOptions, values[index].note);
+
+        const mark = () => {
+          values[index].stock = stockSelect.value;
+          values[index].enough = enoughSelect.value;
+          values[index].note = noteSelect.value;
+          updateStockSelect(stockSelect, row.stockAnswer);
+          updateStockSelect(enoughSelect, row.enoughAnswer);
+          updateStockSelect(noteSelect, row.noteAnswer);
+          if (isStockCorrect(question, values)) setFeedback(container, "good", "本题全部正确。");
+          else setFeedback(container, "wait", "继续核对库存数量、是否充足和备注。");
+          updateScore();
+        };
+        [stockSelect, enoughSelect, noteSelect].forEach(select => select.addEventListener("change", mark));
+        stockCell.appendChild(stockSelect);
+        enoughCell.appendChild(enoughSelect);
+        noteCell.appendChild(noteSelect);
+        tr.append(stockCell, enoughCell, noteCell);
+        tbody.appendChild(tr);
+        updateStockSelect(stockSelect, row.stockAnswer);
+        updateStockSelect(enoughSelect, row.enoughAnswer);
+        updateStockSelect(noteSelect, row.noteAnswer);
+      });
+      table.appendChild(tbody);
+      container.appendChild(table);
+    }
+
+    function renderExcel(question, gi, qi, container) {
+      initQuestionState(question, gi, qi);
+      const values = state.get(keyFor(gi, qi));
+
+      const toolbar = document.createElement("div");
+      toolbar.className = "excel-toolbar";
+
+      const check = document.createElement("button");
+      check.type = "button";
+      check.className = "ghost excel-check";
+      check.textContent = "检查答案";
+
+      const reset = document.createElement("button");
+      reset.type = "button";
+      reset.className = "ghost";
+      reset.textContent = "重置表格";
+
+      const undo = document.createElement("button");
+      undo.type = "button";
+      undo.className = "ghost";
+      undo.textContent = "撤销删除";
+      undo.disabled = !values.lastDeleted;
+
+      const status = document.createElement("span");
+      status.className = "excel-status";
+      toolbar.append(check, reset, undo, status);
+      container.appendChild(toolbar);
+
+      const wrap = document.createElement("div");
+      wrap.className = "excel-wrap";
+      const table = document.createElement("table");
+      table.className = "excel-table";
+      wrap.appendChild(table);
+      container.appendChild(wrap);
+
+      const renderSheet = () => {
+        status.textContent = `当前保留 ${values.rows.length} 行，显示 ${visibleExcelRows(values).length} 行`;
+        undo.disabled = !values.lastDeleted;
+        table.innerHTML = "";
+        const thead = document.createElement("thead");
+        thead.innerHTML = `
+          <tr>
+            <th class="row-head">行</th>
+            <th>订单号</th>
+            <th>下单时间</th>
+            <th>商品</th>
+            <th><div class="header-control"><span>单价</span><button type="button" class="sort-btn ${values.priceSort === "asc" ? "active" : ""}" title="按单价升序排序">↑</button></div></th>
+            <th>数量</th>
+            <th>订单金额</th>
+            <th>支付金额</th>
+            <th><div class="header-control"><span>状态</span><select aria-label="状态筛选"><option value="全部">全部</option><option value="已完成">已完成</option><option value="已发货">已发货</option><option value="待发货">待发货</option><option value="已取消">已取消</option><option value="退款中">退款中</option></select></div></th>
+            <th>买家ID</th>
+            <th>操作</th>
+          </tr>
+        `;
+        table.appendChild(thead);
+        const filter = thead.querySelector("select");
+        filter.value = values.statusFilter;
+        filter.addEventListener("change", () => {
+          values.statusFilter = filter.value;
+          renderSheet();
+          setFeedback(container, "wait", values.statusFilter === "已完成" ? "已筛选“已完成”订单，继续按单价升序排序。" : "本题要求筛选“已完成”状态订单。");
+          updateScore();
+        });
+        const sortBtn = thead.querySelector(".sort-btn");
+        sortBtn.addEventListener("click", () => {
+          values.rows.sort((a, b) => a.price - b.price || question.rows.findIndex(row => row.uid === a.uid) - question.rows.findIndex(row => row.uid === b.uid));
+          values.priceSort = "asc";
+          renderSheet();
+          setFeedback(container, "wait", "已按单价升序排序，请检查是否已删除重复行并筛选“已完成”。");
+          updateScore();
+        });
+
+        const tbody = document.createElement("tbody");
+        const rows = visibleExcelRows(values);
+        rows.forEach((row) => {
+          const originalIndex = question.rows.findIndex(item => item.uid === row.uid) + 1;
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td class="row-head">${originalIndex}</td>
+            <td>${escapeHtml(row.orderId)}</td>
+            <td>${escapeHtml(row.date)}</td>
+            <td>${escapeHtml(row.product)}</td>
+            <td>${row.price.toFixed(2)}</td>
+            <td>${row.qty}</td>
+            <td>${row.orderAmount.toFixed(2)}</td>
+            <td>${row.paymentAmount.toFixed(2)}</td>
+            <td>${escapeHtml(row.status)}</td>
+            <td>${escapeHtml(row.buyerId)}</td>
+            <td><button type="button" class="delete-row" title="删除这一行">×</button></td>
+          `;
+          tr.querySelector(".delete-row").addEventListener("click", () => {
+            const sameOrderCount = values.rows.filter(item => item.orderId === row.orderId).length;
+            values.rows = values.rows.filter(item => item.uid !== row.uid);
+            values.lastDeleted = row;
+            values.priceSort = "";
+            renderSheet();
+            if (sameOrderCount > 1) setFeedback(container, "wait", `已删除 ${row.orderId} 的一条记录。同一订单号保留一条即可。`);
+            else setFeedback(container, "bad", `${row.orderId} 只有一条记录，不应删除。可以点击“撤销删除”或“重置表格”。`);
+            updateScore();
+          });
+          tbody.appendChild(tr);
+        });
+        if (!rows.length) {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td colspan="11" class="row-head">当前筛选无结果</td>`;
+          tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+      };
+
+      const explain = () => {
+        const duplicates = duplicateOrderIds(values.rows);
+        if (duplicates.length) return `还有重复订单号未删除：${duplicates.join("、")}。请先把状态筛选切回“全部”，删除重复订单号的多余行，同一订单号只保留一条。`;
+        if (values.rows.length < new Set(question.rows.map(row => row.orderId)).size) return "有唯一订单被误删了。请撤销删除或重置表格后，只删除重复订单号的多余行。";
+        if (values.statusFilter !== "已完成") return "请在“状态”列下拉筛选中选择“已完成”。";
+        if (values.priceSort !== "asc") return "已筛选后，还需要点击“单价”表头的 ↑，按单价从低到高排序。";
+        const visibleOrder = visibleExcelRows(values).map(row => row.orderId).join("、");
+        return `当前可见订单顺序是 ${visibleOrder || "空"}，还没有得到正确的升序结果。`;
+      };
+
+      check.addEventListener("click", () => {
+        const correct = isExcelCorrect(question, values);
+        setFeedback(container, correct ? "good" : "bad", correct ? "完成正确。你已完成删除重复订单、筛选已完成订单，并按单价升序排序。" : explain());
+        updateScore();
+      });
+
+      reset.addEventListener("click", () => {
+        values.rows = question.rows.map(row => ({ ...row }));
+        values.statusFilter = "全部";
+        values.priceSort = "";
+        values.lastDeleted = null;
+        renderSheet();
+        setFeedback(container, "wait", "表格已重置，请重新完成去重、筛选和排序。");
+        updateScore();
+      });
+
+      undo.addEventListener("click", () => {
+        if (!values.lastDeleted) return;
+        const restored = values.lastDeleted;
+        values.rows.push(restored);
+        values.rows.sort((a, b) => question.rows.findIndex(row => row.uid === a.uid) - question.rows.findIndex(row => row.uid === b.uid));
+        values.lastDeleted = null;
+        values.priceSort = "";
+        renderSheet();
+        setFeedback(container, "wait", `已恢复 ${restored.orderId}。`);
+        updateScore();
+      });
+
+      renderSheet();
+    }
+
+    function makeSelect(options, value) {
+      const select = document.createElement("select");
+      select.innerHTML = `<option value="">请选择</option>` + options.map(option => `<option value="${escapeAttr(option)}">${escapeHtml(option)}</option>`).join("");
+      select.value = value || "";
+      return select;
+    }
+
+    function updateStockSelect(select, answer) {
+      select.classList.remove("correct", "wrong");
+      if (!select.value) return;
+      select.classList.add(select.value === answer ? "correct" : "wrong");
+    }
+
+    function renderMulti(question, gi, qi, container) {
+      initQuestionState(question, gi, qi);
+      const selected = state.get(keyFor(gi, qi));
+      const answers = new Set(question.answers);
+      const chips = document.createElement("div");
+      chips.className = "chips";
+      question.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "choice";
+        btn.textContent = option;
+        if (selected.has(option)) btn.classList.add("selected", answers.has(option) ? "correct" : "wrong");
+        btn.addEventListener("click", () => {
+          if (selected.has(option)) selected.delete(option); else selected.add(option);
+          btn.classList.toggle("selected", selected.has(option));
+          btn.classList.remove("correct", "wrong");
+          if (selected.has(option)) btn.classList.add(answers.has(option) ? "correct" : "wrong");
+          const hasWrong = [...selected].some(item => !answers.has(item));
+          const exact = normalizeSet(selected) === normalizeSet(question.answers);
+          if (exact) setFeedback(container, "good", "全部选择正确。");
+          else if (hasWrong) {
+            const wrongItem = [...selected].find(item => !answers.has(item));
+            const reason = question.explanations && question.explanations[wrongItem] ? question.explanations[wrongItem] : "这个选项不符合题目要求。";
+            setFeedback(container, "bad", `${wrongItem} 不应选择。${reason}`);
+          }
+          else setFeedback(container, "wait", `已选 ${selected.size} 项，还差 ${Math.max(question.answers.length - selected.size, 0)} 项。`);
+          updateScore();
+        });
+        chips.appendChild(btn);
+      });
+      container.appendChild(chips);
+      const toolbar = document.createElement("div");
+      toolbar.className = "toolbar";
+      const reveal = document.createElement("button");
+      reveal.type = "button";
+      reveal.className = "ghost";
+      reveal.textContent = "显示答案";
+      reveal.addEventListener("click", () => setFeedback(container, "wait", `正确答案：${question.answers.join("、")}`));
+      toolbar.appendChild(reveal);
+      container.appendChild(toolbar);
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
+    }
+    function escapeAttr(value) { return escapeHtml(value); }
+
+    function render() {
+      nav.innerHTML = "";
+      app.innerHTML = "";
+      pages.forEach((page, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = `${index + 1}`;
+        button.title = `${examLabel(page.group)} - ${page.group.focus} - ${page.question.title}`;
+        if (index === currentPage) button.classList.add("active");
+        if (isQuestionDone(page.question, page.gi, page.qi)) button.classList.add("done");
+        button.addEventListener("click", () => { currentPage = index; render(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+        nav.appendChild(button);
+      });
+
+      const { group, question, gi, qi } = pages[currentPage];
+      initQuestionState(question, gi, qi);
+      const section = document.createElement("section");
+      section.id = group.id;
+      section.innerHTML = `
+        <div class="pager">
+          <button type="button" id="prevPage" ${currentPage === 0 ? "disabled" : ""}>上一题</button>
+          <span>第 ${currentPage + 1} / ${pages.length} 题</span>
+          <button type="button" id="nextPage" ${currentPage === pages.length - 1 ? "disabled" : ""}>下一题</button>
+        </div>
+        <h2>${escapeHtml(group.title)}</h2>
+        <div class="exam-meta">
+          <span>${escapeHtml(examLabel(group))}</span>
+          <span class="focus">核心考点：${escapeHtml(group.focus)}</span>
+        </div>
+        <div class="material"><div class="material-title">当前题资料</div>${materialFor(group, question)}</div>
+      `;
+      const q = document.createElement("div");
+      q.className = "question";
+      q.innerHTML = `
+        <h3>${escapeHtml(question.title)}</h3>
+        <p class="stem">${escapeHtml(question.stem)}</p>
+      `;
+      if (question.type === "fields") renderFields(question, gi, qi, q);
+      if (question.type === "single") renderSingle(question, gi, qi, q);
+      if (question.type === "multi") renderMulti(question, gi, qi, q);
+      if (question.type === "stock") renderStock(question, gi, qi, q);
+      if (question.type === "excel") renderExcel(question, gi, qi, q);
+      const feedback = document.createElement("div");
+      feedback.className = "feedback wait";
+      feedback.textContent = isQuestionDone(question, gi, qi) ? "本题已完成。" : "等待作答。";
+      q.appendChild(feedback);
+      const actions = document.createElement("div");
+      actions.className = "page-actions";
+      const next = document.createElement("button");
+      next.type = "button";
+      next.className = "ghost";
+      next.textContent = currentPage === pages.length - 1 ? "完成" : "下一题";
+      next.addEventListener("click", () => {
+        if (currentPage === pages.length - 1 && question.type === "excel") {
+          const checkButton = q.querySelector(".excel-check");
+          if (checkButton) checkButton.click();
+          return;
+        }
+        if (currentPage < pages.length - 1) currentPage += 1;
+        render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+      actions.appendChild(next);
+      q.appendChild(actions);
+      section.appendChild(q);
+      app.appendChild(section);
+      document.getElementById("prevPage").addEventListener("click", () => { if (currentPage > 0) currentPage -= 1; render(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+      document.getElementById("nextPage").addEventListener("click", () => { if (currentPage < pages.length - 1) currentPage += 1; render(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+      updateScore();
+    }
+
+    render();
+  </script>
+</body>
+</html>

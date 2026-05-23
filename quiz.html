@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>精炼选择题训练</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="quiz-app" id="app">
+      <header class="quiz-topbar">
+        <div class="topbar-inner">
+          <a class="brand-mark compact" href="./index.html" aria-label="返回首页">
+            <span class="brand-core">EC</span>
+            <span>五级冲刺</span>
+          </a>
+          <div class="topbar-actions">
+            <a class="nav-link" href="./short-answer.html">简答实操题</a>
+            <button class="ghost-button" id="resetProgress" type="button">重置进度</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="practice-shell">
+        <aside class="control-panel" aria-label="练习设置">
+          <div class="panel-section">
+            <p class="section-label">训练模式</p>
+            <div class="segmented" role="group" aria-label="训练模式">
+              <button class="segment active" type="button" data-mode="all">全部</button>
+              <button class="segment" type="button" data-mode="wrong">错题</button>
+              <button class="segment" type="button" data-mode="bookmarked">收藏</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <label class="section-label" for="categorySelect">知识分类</label>
+            <select class="select" id="categorySelect">
+              <option value="all">全部分类</option>
+            </select>
+          </div>
+
+          <div class="panel-section">
+            <label class="section-label" for="searchInput">搜索题干</label>
+            <input class="input" id="searchInput" type="search" placeholder="输入关键词" />
+          </div>
+
+          <div class="panel-section switches">
+            <label class="switch-row">
+              <input id="shuffleToggle" type="checkbox" />
+              <span>随机顺序</span>
+            </label>
+            <label class="switch-row">
+              <input id="autoNextToggle" type="checkbox" />
+              <span>答对自动下一题</span>
+            </label>
+          </div>
+
+          <div class="stats-grid" aria-label="练习统计">
+            <div><strong id="statCorrect">0</strong><span>正确</span></div>
+            <div><strong id="statWrong">0</strong><span>错题</span></div>
+            <div><strong id="statDone">0</strong><span>已答</span></div>
+            <div><strong id="statTotal">0</strong><span>题库</span></div>
+          </div>
+        </aside>
+
+        <section class="question-stage" aria-live="polite">
+          <div class="stage-head">
+            <div>
+              <p class="eyebrow" id="questionMeta">正在加载题库</p>
+              <h1 id="questionTitle">精炼选择题训练</h1>
+            </div>
+            <button class="icon-button" id="bookmarkButton" type="button" title="收藏本题" aria-label="收藏本题">☆</button>
+          </div>
+
+          <div class="progress-track" aria-hidden="true">
+            <span id="progressBar"></span>
+          </div>
+
+          <article class="question-card">
+            <p class="question-text" id="questionText">正在读取 qxueyou_refined_practice_questions.json...</p>
+            <div class="options-grid" id="optionsGrid"></div>
+            <div class="feedback-box idle" id="feedbackBox">
+              <strong>作答后显示反馈</strong>
+              <span>答错会展示解析原因和记忆提示。</span>
+            </div>
+          </article>
+
+          <div class="stage-footer">
+            <button class="ghost-button" id="prevButton" type="button">上一题</button>
+            <div class="jump-group">
+              <input class="jump-input" id="jumpInput" type="number" min="1" aria-label="跳转题号" />
+              <button class="ghost-button" id="jumpButton" type="button">跳转</button>
+            </div>
+            <button class="primary-button" id="nextButton" type="button">下一题</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="./quiz.js"></script>
+  </body>
+</html>
