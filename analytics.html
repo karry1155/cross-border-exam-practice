@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>题库统计看板</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="analytics-page">
+    <header class="quiz-topbar">
+      <div class="topbar-inner">
+        <a class="brand-mark compact" href="./index.html" aria-label="返回首页">
+          <span class="brand-core">EC</span>
+          <span>题库统计</span>
+        </a>
+        <div class="topbar-actions">
+          <a class="nav-link" href="./quiz.html?mode=refined">返回练习</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="analytics-shell">
+      <section class="analytics-hero">
+        <p class="eyebrow">Cloud Stats</p>
+        <h1>大家真实踩坑排行</h1>
+        <p>输入后台口令后查看匿名汇总：哪些题错得多、哪些题被收藏得多、哪些分类最需要回炉。</p>
+      </section>
+
+      <section class="analytics-controls" aria-label="统计筛选">
+        <label>
+          <span>后台口令</span>
+          <input class="input" id="adminToken" type="password" placeholder="Cloudflare 环境变量 ADMIN_TOKEN" autocomplete="current-password" />
+        </label>
+        <label>
+          <span>训练强度</span>
+          <select class="select" id="analyticsMode">
+            <option value="all">全部</option>
+            <option value="full">全量训练</option>
+            <option value="refined">精简训练</option>
+            <option value="ultra">极简训练</option>
+          </select>
+        </label>
+        <button class="primary-button" id="loadAnalytics" type="button">读取统计</button>
+      </section>
+
+      <section class="analytics-summary" aria-label="汇总数据">
+        <div><strong id="sumAttempts">0</strong><span>有效作答</span></div>
+        <div><strong id="sumWrong">0</strong><span>错误次数</span></div>
+        <div><strong id="sumRate">0%</strong><span>整体错率</span></div>
+        <div><strong id="sumBookmark">0</strong><span>收藏人数</span></div>
+      </section>
+
+      <p class="analytics-status" id="analyticsStatus">等待读取统计。</p>
+
+      <section class="analytics-grid">
+        <article class="analytics-panel">
+          <h2>高错率题目</h2>
+          <div class="analytics-list" id="wrongList"></div>
+        </article>
+        <article class="analytics-panel">
+          <h2>高收藏题目</h2>
+          <div class="analytics-list" id="bookmarkList"></div>
+        </article>
+      </section>
+
+      <section class="analytics-panel">
+        <h2>分类概览</h2>
+        <div class="analytics-table" id="categoryList"></div>
+      </section>
+    </main>
+
+    <script src="./analytics.js"></script>
+  </body>
+</html>

@@ -21,43 +21,7 @@
         </div>
       </header>
 
-      <main class="mode-shell" id="modeShell">
-        <section class="mode-hero" aria-labelledby="modeTitle">
-          <p class="eyebrow">Choice Training</p>
-          <h1 id="modeTitle">选择你的训练强度</h1>
-          <p>
-            全量用于覆盖，精简用于提分，极简用于临考前把最容易掉坑的题再过一遍。也可以直接跳过，带着玄学祝福上场。
-          </p>
-        </section>
-        <section class="mode-grid" aria-label="训练强度选择">
-          <button class="mode-card" type="button" data-training="full">
-            <span class="route-kicker">Full</span>
-            <strong>全量训练</strong>
-            <small>约 4-6 小时 · 1218 题</small>
-            <span>覆盖原始全部选择判断题，适合第一轮完整扫盲。</span>
-          </button>
-          <button class="mode-card recommended" type="button" data-training="refined">
-            <span class="route-kicker">Focused</span>
-            <strong>精简训练</strong>
-            <small>约 90-120 分钟 · 373 题</small>
-            <span>使用已提炼题库，带分类、错因解析和记忆提示。</span>
-          </button>
-          <button class="mode-card" type="button" data-training="ultra">
-            <span class="route-kicker">Ultra</span>
-            <strong>极简训练</strong>
-            <small>约 30-45 分钟 · 约 112 题</small>
-            <span>从精选题继续压缩，优先反直觉和容易被选项长度诱导的题。</span>
-          </button>
-          <a class="mode-card skip-card" href="./skip.html">
-            <span class="route-kicker">Skip</span>
-            <strong>直接跳过</strong>
-            <small>约 5 秒</small>
-            <span>如果你已经和题库和解，就收下考前祝福。</span>
-          </a>
-        </section>
-      </main>
-
-      <main class="practice-shell hidden" id="practiceShell">
+      <main class="practice-shell" id="practiceShell">
         <aside class="control-panel" aria-label="练习设置">
           <div class="panel-section">
             <p class="section-label">训练模式</p>
@@ -66,10 +30,10 @@
               <button class="segment" type="button" data-mode="wrong">错题</button>
               <button class="segment" type="button" data-mode="bookmarked">收藏</button>
             </div>
-          </div>
-
-          <div class="panel-section">
-            <button class="ghost-button mode-back" id="changeTraining" type="button">切换训练强度</button>
+            <div class="training-summary">
+              <span id="currentTrainingLabel">当前：精简训练</span>
+              <button class="ghost-button mode-back" id="changeTraining" type="button">切换训练强度</button>
+            </div>
           </div>
 
           <div class="panel-section">
@@ -101,6 +65,16 @@
             <div><strong id="statDone">0</strong><span>已答</span></div>
             <div><strong id="statTotal">0</strong><span>题库</span></div>
           </div>
+
+          <div class="wrong-tools hidden" id="wrongTools" aria-live="polite">
+            <div class="wrong-tools-head">
+              <span>错题工具</span>
+              <strong id="wrongToolCount">0 题</strong>
+            </div>
+            <button class="primary-button export-wrong-button" id="exportWrongImage" type="button">导出错题长图</button>
+            <p id="wrongToolHint">切到错题后可导出当前训练强度下的错题长图。</p>
+          </div>
+
         </aside>
 
         <section class="question-stage" aria-live="polite">
@@ -109,7 +83,10 @@
               <p class="eyebrow" id="questionMeta">正在加载题库</p>
               <h1 id="questionTitle">选择题训练</h1>
             </div>
-            <button class="icon-button" id="bookmarkButton" type="button" title="收藏本题" aria-label="收藏本题">☆</button>
+            <div class="bookmark-widget" aria-label="本题收藏">
+              <button class="icon-button" id="bookmarkButton" type="button" title="收藏本题" aria-label="收藏本题">☆</button>
+              <span id="bookmarkCount">收藏数 --</span>
+            </div>
           </div>
 
           <div class="progress-track" aria-hidden="true">
@@ -135,6 +112,45 @@
           </div>
         </section>
       </main>
+
+      <div class="mode-modal hidden" id="trainingModal" role="dialog" aria-modal="true" aria-labelledby="modeTitle">
+        <div class="mode-dialog">
+          <button class="modal-close" id="closeTrainingModal" type="button" aria-label="关闭训练强度选择">×</button>
+          <section class="mode-hero" aria-labelledby="modeTitle">
+            <p class="eyebrow">Choice Training</p>
+            <h1 id="modeTitle">选择你的训练强度</h1>
+            <p>
+              全量用于覆盖，精简用于提分，极简用于临考前把最容易掉坑的题再过一遍。也可以直接跳过，带着玄学祝福上场。
+            </p>
+          </section>
+          <section class="mode-grid" aria-label="训练强度选择">
+            <button class="mode-card" type="button" data-training="full">
+              <span class="route-kicker">Full</span>
+              <strong>全量训练</strong>
+              <small>约 4-6 小时 · 1218 题</small>
+              <span>覆盖原始全部选择判断题，适合第一轮完整扫盲。</span>
+            </button>
+            <button class="mode-card recommended" type="button" data-training="refined">
+              <span class="route-kicker">Focused</span>
+              <strong>精简训练</strong>
+              <small>约 90-120 分钟 · 373 题</small>
+              <span>使用已提炼题库，带分类、错因解析和记忆提示。</span>
+            </button>
+            <button class="mode-card" type="button" data-training="ultra">
+              <span class="route-kicker">Ultra</span>
+              <strong>极简训练</strong>
+              <small>约 25-35 分钟 · 88 题</small>
+              <span>从精选题中只保留高质量考点，并纳入你的已知错题。</span>
+            </button>
+            <a class="mode-card skip-card" href="./skip.html">
+              <span class="route-kicker">Skip</span>
+              <strong>直接跳过</strong>
+              <small>约 5 秒</small>
+              <span>如果你已经和题库和解，就收下考前祝福。</span>
+            </a>
+          </section>
+        </div>
+      </div>
     </div>
     <script src="./quiz.js"></script>
   </body>

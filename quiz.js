@@ -18,15 +18,24 @@ const TRAINING_MODES = {
     dataUrl: "./ultra_questions.json",
     storeKey: "ec_exam_ultra_choice_progress_v1",
     loadingText: "正在读取 ultra_questions.json...",
-    noAnalysisText: "极简题库优先保留反直觉和易错题，注意不要被选项长短诱导。",
+    noAnalysisText: "极简题库按题目质量保留高价值考点，并纳入你的已知错题。",
   },
 };
 
+const GLOBAL_PROGRESS_KEY = "ec_exam_choice_progress_by_source_v2";
+const LEGACY_MIGRATION_KEY = "ec_exam_choice_progress_migrated_v3";
+const SESSION_KEY = "ec_exam_anonymous_session_v1";
+const LEGACY_PROGRESS_KEYS = Object.fromEntries(
+  Object.entries(TRAINING_MODES).map(([mode, config]) => [mode, config.storeKey]),
+);
+
 const elements = {
-  modeShell: document.getElementById("modeShell"),
   practiceShell: document.getElementById("practiceShell"),
+  trainingModal: document.getElementById("trainingModal"),
+  closeTrainingModal: document.getElementById("closeTrainingModal"),
   modeCards: Array.from(document.querySelectorAll("[data-training]")),
   changeTraining: document.getElementById("changeTraining"),
+  currentTrainingLabel: document.getElementById("currentTrainingLabel"),
   category: document.getElementById("categorySelect"),
   search: document.getElementById("searchInput"),
   shuffle: document.getElementById("shuffleToggle"),
@@ -36,6 +45,10 @@ const elements = {
   statWrong: document.getElementById("statWrong"),
   statDone: document.getElementById("statDone"),
   statTotal: document.getElementById("statTotal"),
+  wrongTools: document.getElementById("wrongTools"),
+  wrongToolCount: document.getElementById("wrongToolCount"),
+  wrongToolHint: document.getElementById("wrongToolHint"),
+  exportWrongImage: document.getElementById("exportWrongImage"),
   meta: document.getElementById("questionMeta"),
   title: document.getElementById("questionTitle"),
   text: document.getElementById("questionText"),
@@ -43,6 +56,7 @@ const elements = {
   feedback: document.getElementById("feedbackBox"),
   progress: document.getElementById("progressBar"),
   bookmark: document.getElementById("bookmarkButton"),
+  bookmarkCount: document.getElementById("bookmarkCount"),
   prev: document.getElementById("prevButton"),
   next: document.getElementById("nextButton"),
   jump: document.getElementById("jumpInput"),
@@ -58,6 +72,8 @@ const state = {
   trainingMode: "",
   progress: {},
   metadata: {},
+  bookmarkCounts: {},
+  bookmarkCountsLoaded: false,
 };
 
 bindEvents();
@@ -67,7 +83,11 @@ function bindEvents() {
   elements.modeCards.forEach((button) => {
     button.addEventListener("click", () => startTraining(button.dataset.training));
   });
-  elements.changeTraining.addEventListener("click", () => showModeSelect());
+  elements.changeTraining.addEventListener("click", () => openTrainingModal());
+  elements.closeTrainingModal.addEventListener("click", () => closeTrainingModal());
+  elements.trainingModal.addEventListener("click", (event) => {
+    if (event.target === elements.trainingModal) closeTrainingModal();
+  });
   elements.category.addEventListener("change", () => rebuildDeck());
   elements.search.addEventListener("input", debounce(() => rebuildDeck(), 180));
   elements.shuffle.addEventListener("change", () => rebuildDeck());
@@ -86,13 +106,17 @@ function bindEvents() {
   elements.jump.addEventListener("keydown", (event) => {
     if (event.key === "Enter") jumpTo();
   });
+  elements.exportWrongImage.addEventListener("click", exportWrongImage);
 
   elements.bookmark.addEventListener("click", () => {
     const question = currentQuestion();
     if (!question) return;
     const record = recordFor(question.id);
     record.bookmarked = !record.bookmarked;
+    record.modes = { ...(record.modes || {}), [state.trainingMode]: true };
+    adjustBookmarkCount(question.id, record.bookmarked ? 1 : -1);
     saveProgress();
+    trackBookmark(question, record.bookmarked);
     renderQuestion();
     updateStats();
   });
@@ -100,12 +124,17 @@ function bindEvents() {
   elements.reset.addEventListener("click", () => {
     if (!state.trainingMode) return;
     if (!confirm(`确定清空“${TRAINING_MODES[state.trainingMode].title}”的练习进度、错题和收藏吗？`)) return;
-    state.progress = {};
+    state.all.forEach((question) => {
+      delete state.progress[question.id];
+    });
     saveProgress();
     rebuildDeck();
   });
-
   window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !elements.trainingModal.classList.contains("hidden")) {
+      closeTrainingModal();
+      return;
+    }
     if (event.target && ["INPUT", "SELECT"].includes(event.target.tagName)) return;
     const key = event.key.toUpperCase();
     if (["A", "B", "C", "D"].includes(key)) answer(key);
@@ -115,20 +144,24 @@ function bindEvents() {
 }
 
 function restoreModeFromUrl() {
-  const mode = new URLSearchParams(window.location.search).get("mode");
-  if (TRAINING_MODES[mode]) startTraining(mode);
+  const params = new URLSearchParams(window.location.search);
+  const mode = params.get("mode");
+  startTraining(TRAINING_MODES[mode] ? mode : "refined", { showPicker: params.get("choose") === "1" });
 }
 
-async function startTraining(mode) {
+async function startTraining(mode, options = {}) {
   const config = TRAINING_MODES[mode];
   if (!config) return;
   state.trainingMode = mode;
   state.all = [];
   state.deck = [];
   state.index = 0;
-  state.progress = loadProgress(config.storeKey);
-  state.metadata = {};
-  showPractice(config);
+    state.progress = loadProgress();
+    state.metadata = {};
+    state.bookmarkCounts = {};
+    state.bookmarkCountsLoaded = false;
+    showPractice(config);
+    closeTrainingModal();
 
   try {
     const response = await fetch(config.dataUrl);
@@ -138,22 +171,24 @@ async function startTraining(mode) {
     state.metadata = Array.isArray(payload) ? {} : payload.metadata || {};
     state.all = questions.map((question, index) => ({
       ...question,
-      id: `${mode}-${question.source_id || question.id || index + 1}`,
+      id: String(question.source_id || question.id || index + 1),
       order: index + 1,
       category: question.category || config.title,
       knowledge_point: question.knowledge_point || "综合训练",
     }));
     hydrateCategories();
     rebuildDeck();
+    refreshBookmarkCounts();
     updateUrlMode(mode);
+    if (options.showPicker) window.setTimeout(() => openTrainingModal(), 120);
   } catch (error) {
     renderLoadError(error, config);
   }
 }
 
 function showPractice(config) {
-  elements.modeShell.classList.add("hidden");
   elements.practiceShell.classList.remove("hidden");
+  elements.currentTrainingLabel.textContent = `当前：${config.title}`;
   elements.meta.textContent = "正在加载题库";
   elements.title.textContent = config.title;
   elements.text.textContent = config.loadingText;
@@ -164,10 +199,15 @@ function showPractice(config) {
   resetFilters();
 }
 
-function showModeSelect() {
-  elements.practiceShell.classList.add("hidden");
-  elements.modeShell.classList.remove("hidden");
-  window.history.replaceState({}, "", window.location.pathname);
+function openTrainingModal() {
+  elements.trainingModal.classList.remove("hidden");
+  document.body.classList.add("modal-open");
+  elements.closeTrainingModal.focus();
+}
+
+function closeTrainingModal() {
+  elements.trainingModal.classList.add("hidden");
+  document.body.classList.remove("modal-open");
 }
 
 function resetFilters() {
@@ -212,6 +252,7 @@ function rebuildDeck() {
   state.index = 0;
   renderQuestion();
   updateStats();
+  updateWrongTools();
 }
 
 function renderQuestion() {
@@ -227,6 +268,7 @@ function renderQuestion() {
     elements.progress.style.width = "0%";
     elements.bookmark.classList.remove("active");
     elements.bookmark.textContent = "☆";
+    elements.bookmarkCount.textContent = "收藏数 --";
     elements.prev.disabled = true;
     elements.next.disabled = true;
     elements.jump.value = "";
@@ -246,6 +288,7 @@ function renderQuestion() {
   elements.progress.style.width = `${(displayIndex / Math.max(total, 1)) * 100}%`;
   elements.bookmark.classList.toggle("active", Boolean(record.bookmarked));
   elements.bookmark.textContent = record.bookmarked ? "★" : "☆";
+  elements.bookmarkCount.textContent = bookmarkCountText(question.id);
   elements.prev.disabled = state.index === 0;
   elements.next.disabled = state.index >= total - 1;
   elements.jump.max = total;
@@ -281,9 +324,12 @@ function answer(key) {
   record.wrong = key !== question.answer;
   record.lastAnsweredAt = new Date().toISOString();
   record.attempts = (record.attempts || 0) + 1;
+  record.modes = { ...(record.modes || {}), [state.trainingMode]: true };
   saveProgress();
+  trackAnswer(question, record);
   renderQuestion();
   updateStats();
+  updateWrongTools();
 
   if (record.correct && elements.autoNext.checked && state.index < state.deck.length - 1) {
     window.setTimeout(() => move(1), 520);
@@ -294,23 +340,183 @@ function renderFeedback(question, selected, isCorrect) {
   const config = TRAINING_MODES[state.trainingMode];
   const selectedText = question.options[selected];
   const answerText = question.options[question.answer];
-  const reason = question.pitfall || question.ultra_reason || config.noAnalysisText;
+  const reason = question.pitfall || question.quality_reason || config.noAnalysisText;
   const memory = question.memory_tip ? `记忆提示：${question.memory_tip}` : "";
   const confidence = question.confidence ? `题库置信度：${Math.round(question.confidence * 100)}%` : "";
   const keep = question.why_keep ? `入选原因：${question.why_keep}` : "";
-  const rewritten = question.rewritten ? "本题已压平选项长度，避免“三短一长”诱导。" : "";
   elements.feedback.className = `feedback-box ${isCorrect ? "good" : "bad"}`;
   elements.feedback.innerHTML = isCorrect
-    ? `<strong>回答正确：${escapeHtml(question.answer)}. ${escapeHtml(answerText)}</strong><span>${escapeHtml(memory || rewritten || keep || "继续保持这个节奏。")}</span>`
-    : `<strong>回答错误：你选了 ${escapeHtml(selected)}. ${escapeHtml(selectedText)}</strong><span>正确答案：${escapeHtml(question.answer)}. ${escapeHtml(answerText)}<br>${escapeHtml(reason)}${memory ? `<br>${escapeHtml(memory)}` : ""}${rewritten ? `<br>${escapeHtml(rewritten)}` : ""}${confidence ? `<br>${escapeHtml(confidence)}` : ""}</span>`;
+    ? `<strong>回答正确：${escapeHtml(question.answer)}. ${escapeHtml(answerText)}</strong><span>${escapeHtml(memory || keep || question.quality_reason || "继续保持这个节奏。")}</span>`
+    : `<strong>回答错误：你选了 ${escapeHtml(selected)}. ${escapeHtml(selectedText)}</strong><span>正确答案：${escapeHtml(question.answer)}. ${escapeHtml(answerText)}<br>${escapeHtml(reason)}${memory ? `<br>${escapeHtml(memory)}` : ""}${confidence ? `<br>${escapeHtml(confidence)}` : ""}</span>`;
 }
 
 function updateStats() {
-  const values = Object.values(state.progress);
-  elements.statCorrect.textContent = values.filter((item) => item.correct).length;
-  elements.statWrong.textContent = values.filter((item) => item.wrong).length;
-  elements.statDone.textContent = values.filter((item) => item.selected).length;
+  const currentRecords = state.all.map((question) => state.progress[question.id]).filter(Boolean);
+  elements.statCorrect.textContent = currentRecords.filter((item) => item.correct).length;
+  elements.statWrong.textContent = currentRecords.filter((item) => item.wrong).length;
+  elements.statDone.textContent = currentRecords.filter((item) => item.selected).length;
   elements.statTotal.textContent = state.all.length;
+}
+
+function updateWrongTools() {
+  const wrongItems = wrongQuestions();
+  const visible = state.filterMode === "wrong";
+  elements.wrongTools.classList.toggle("hidden", !visible);
+  if (!visible) return;
+
+  const count = wrongItems.length;
+  elements.wrongToolCount.textContent = `${count} 题`;
+  elements.exportWrongImage.disabled = count === 0;
+  elements.wrongToolHint.textContent = count
+    ? `将导出“${TRAINING_MODES[state.trainingMode].title}”下全部错题，彩色标记你的选择和正确选项。`
+    : "当前训练强度还没有错题，答错后这里就能导出长图。";
+}
+
+function wrongQuestions() {
+  return state.all
+    .map((question) => ({ question, record: state.progress[question.id] }))
+    .filter((item) => item.record?.wrong);
+}
+
+function exportWrongImage() {
+  const wrongItems = wrongQuestions();
+  if (!wrongItems.length) return;
+
+  const config = TRAINING_MODES[state.trainingMode];
+  const scale = Math.min(Math.max(window.devicePixelRatio || 1, 1), 2);
+  const width = 960;
+  const padding = 42;
+  const contentWidth = width - padding * 2;
+  const blockGap = 24;
+  const titleFont = "700 32px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif";
+  const metaFont = "700 18px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif";
+  const bodyFont = "400 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif";
+  const smallFont = "400 18px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif";
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  const blocks = wrongItems.map((item, index) => buildWrongExportBlock(item.question, item.record, index + 1, context, contentWidth, {
+    bodyFont,
+    smallFont,
+  }));
+  const contentHeight = blocks.reduce((total, block) => total + block.height + blockGap, 0);
+  const height = Math.max(360, padding * 2 + 96 + contentHeight);
+
+  canvas.width = width * scale;
+  canvas.height = height * scale;
+  canvas.style.width = `${width}px`;
+  canvas.style.height = `${height}px`;
+  context.scale(scale, scale);
+  context.fillStyle = "#f4f7fa";
+  context.fillRect(0, 0, width, height);
+
+  context.fillStyle = "#152033";
+  context.font = titleFont;
+  context.fillText(`${config.title} · 错题长图`, padding, padding + 34);
+  context.fillStyle = "#68778c";
+  context.font = smallFont;
+  context.fillText(`共 ${wrongItems.length} 题 · ${new Date().toLocaleString("zh-CN", { hour12: false })}`, padding, padding + 72);
+
+  let y = padding + 112;
+  blocks.forEach((block) => {
+    drawRoundedRect(context, padding, y, contentWidth, block.height, 12, "#ffffff");
+    drawWrappedLines(context, block.metaLines, padding + 22, y + 28, metaFont, "#128575", 26);
+    let innerY = y + 64;
+    drawWrappedLines(context, block.questionLines, padding + 22, innerY, bodyFont, "#152033", 32);
+    innerY += block.questionLines.length * 32 + 16;
+    block.optionBlocks.forEach((optionBlock) => {
+      drawRoundedRect(context, padding + 22, innerY, contentWidth - 44, optionBlock.height, 10, optionBlock.background);
+      drawWrappedLines(context, optionBlock.lines, padding + 40, innerY + 28, smallFont, optionBlock.color, 26);
+      innerY += optionBlock.height + 10;
+    });
+    innerY += 8;
+    drawWrappedLines(context, block.reasonLines, padding + 22, innerY, smallFont, "#68778c", 26);
+    innerY += block.reasonLines.length * 26 + 8;
+    if (block.memoryLines.length) drawWrappedLines(context, block.memoryLines, padding + 22, innerY, smallFont, "#8a5a00", 26);
+    y += block.height + blockGap;
+  });
+
+  const link = document.createElement("a");
+  link.download = `${config.title}-错题长图.png`;
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+}
+
+function buildWrongExportBlock(question, record, index, context, width, fonts) {
+  const selectedText = question.options?.[record.selected] || "未记录选项内容";
+  const reason = question.pitfall || question.quality_reason || TRAINING_MODES[state.trainingMode].noAnalysisText;
+  const memory = question.memory_tip || "暂无记忆提示。";
+  const meta = `#${index} · 原第 ${question.order} 题 · ${question.category || "未分类"}`;
+  const questionText = `题干：${question.question}`;
+  const textWidth = width - 44;
+  const optionWidth = width - 80;
+  const metaLines = wrapCanvasText(context, meta, textWidth, fonts.smallFont);
+  const questionLines = wrapCanvasText(context, questionText, textWidth, fonts.bodyFont);
+  const optionBlocks = Object.entries(question.options || {}).map(([key, value]) => {
+    const isCorrect = key === question.answer;
+    const isWrongSelected = key === record.selected && key !== question.answer;
+    const marker = isCorrect ? "正确" : isWrongSelected ? "你的选择" : "";
+    const label = marker ? `${key}. ${value}  ${marker}` : `${key}. ${value}`;
+    const lines = wrapCanvasText(context, label, optionWidth, fonts.smallFont);
+    return {
+      lines,
+      height: 18 + lines.length * 26,
+      background: isCorrect ? "#e9f8ef" : isWrongSelected ? "#fff1ee" : "#f4f7fa",
+      color: isCorrect ? "#147a43" : isWrongSelected ? "#b42318" : "#152033",
+    };
+  });
+  const reasonLines = wrapCanvasText(context, `解析：${reason}`, textWidth, fonts.smallFont);
+  const memoryLines = wrapCanvasText(context, `记忆提示：${memory}`, textWidth, fonts.smallFont);
+  const optionsHeight = optionBlocks.reduce((total, block) => total + block.height + 10, 0);
+  const height =
+    104 +
+    questionLines.length * 32 +
+    optionsHeight +
+    reasonLines.length * 26 +
+    memoryLines.length * 26 +
+    36;
+  return { metaLines, questionLines, optionBlocks, reasonLines, memoryLines, height };
+}
+
+function wrapCanvasText(context, text, maxWidth, font) {
+  context.font = font;
+  return String(text || "")
+    .split("\n")
+    .flatMap((line) => {
+      const chars = Array.from(line);
+      const lines = [];
+      let current = "";
+      chars.forEach((char) => {
+        const next = current + char;
+        if (context.measureText(next).width > maxWidth && current) {
+          lines.push(current);
+          current = char;
+        } else {
+          current = next;
+        }
+      });
+      lines.push(current || " ");
+      return lines;
+    });
+}
+
+function drawWrappedLines(context, lines, x, y, font, color, lineHeight) {
+  context.font = font;
+  context.fillStyle = color;
+  lines.forEach((line, index) => {
+    context.fillText(line, x, y + index * lineHeight);
+  });
+}
+
+function drawRoundedRect(context, x, y, width, height, radius, color) {
+  context.fillStyle = color;
+  context.beginPath();
+  context.moveTo(x + radius, y);
+  context.arcTo(x + width, y, x + width, y + height, radius);
+  context.arcTo(x + width, y + height, x, y + height, radius);
+  context.arcTo(x, y + height, x, y, radius);
+  context.arcTo(x, y, x + width, y, radius);
+  context.closePath();
+  context.fill();
 }
 
 function move(delta) {
@@ -335,16 +541,144 @@ function recordFor(id) {
   return state.progress[id];
 }
 
-function loadProgress(key) {
+function loadProgress() {
   try {
-    return JSON.parse(localStorage.getItem(key) || "{}");
+    const stored = JSON.parse(localStorage.getItem(GLOBAL_PROGRESS_KEY) || "{}");
+    const migrated = migrateLegacyProgress(stored);
+    if (migrated.changed) localStorage.setItem(GLOBAL_PROGRESS_KEY, JSON.stringify(migrated.progress));
+    return migrated.progress;
   } catch {
     return {};
   }
 }
 
 function saveProgress() {
-  localStorage.setItem(TRAINING_MODES[state.trainingMode].storeKey, JSON.stringify(state.progress));
+  localStorage.setItem(GLOBAL_PROGRESS_KEY, JSON.stringify(state.progress));
+}
+
+async function refreshBookmarkCounts() {
+  try {
+    const response = await fetch("/api/bookmarks");
+    if (!response.ok) return;
+    const data = await response.json();
+    if (!data.ok || !Array.isArray(data.bookmarks)) return;
+    state.bookmarkCounts = Object.fromEntries(
+      data.bookmarks.map((item) => [String(item.source_id), Number(item.bookmark_count || 0)]),
+    );
+    state.bookmarkCountsLoaded = true;
+    renderQuestion();
+  } catch {
+    state.bookmarkCountsLoaded = false;
+  }
+}
+
+function bookmarkCountText(sourceId) {
+  if (!state.bookmarkCountsLoaded) return "收藏数 --";
+  return `收藏数 ${state.bookmarkCounts[String(sourceId)] || 0}`;
+}
+
+function adjustBookmarkCount(sourceId, delta) {
+  if (!state.bookmarkCountsLoaded) return;
+  const key = String(sourceId);
+  state.bookmarkCounts[key] = Math.max((state.bookmarkCounts[key] || 0) + delta, 0);
+}
+
+function getSessionId() {
+  let sessionId = localStorage.getItem(SESSION_KEY);
+  if (sessionId) return sessionId;
+  sessionId = window.crypto?.randomUUID
+    ? window.crypto.randomUUID()
+    : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+  localStorage.setItem(SESSION_KEY, sessionId);
+  return sessionId;
+}
+
+function questionTelemetryPayload(question) {
+  return {
+    session_id: getSessionId(),
+    source_id: question.id,
+    mode: state.trainingMode,
+    question_order: question.order,
+    category: question.category || "",
+    knowledge_point: question.knowledge_point || "",
+    question_text: question.question || "",
+    answer: question.answer || "",
+    answer_text: question.options?.[question.answer] || "",
+  };
+}
+
+function trackAnswer(question, record) {
+  sendTelemetry("/api/answer", {
+    ...questionTelemetryPayload(question),
+    selected: record.selected,
+    selected_text: question.options?.[record.selected] || "",
+    correct: Boolean(record.correct),
+  });
+}
+
+function trackBookmark(question, bookmarked) {
+  sendTelemetry("/api/bookmark", {
+    ...questionTelemetryPayload(question),
+    bookmarked: Boolean(bookmarked),
+  });
+}
+
+function sendTelemetry(url, payload) {
+  const body = JSON.stringify(payload);
+  if (navigator.sendBeacon) {
+    const sent = navigator.sendBeacon(url, new Blob([body], { type: "application/json" }));
+    if (sent) return;
+  }
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body,
+    keepalive: true,
+  }).catch(() => {});
+}
+
+function migrateLegacyProgress(progress) {
+  if (localStorage.getItem(LEGACY_MIGRATION_KEY) === "done") return { progress, changed: false };
+  let changed = false;
+  const next = { ...(progress || {}) };
+  for (const [mode, key] of Object.entries(LEGACY_PROGRESS_KEYS)) {
+    let legacy = {};
+    try {
+      legacy = JSON.parse(localStorage.getItem(key) || "{}");
+    } catch {
+      legacy = {};
+    }
+
+    for (const [legacyId, record] of Object.entries(legacy)) {
+      if (!record || typeof record !== "object") continue;
+      const sourceId = normalizeLegacyProgressId(legacyId);
+      if (!sourceId) continue;
+      const existing = next[sourceId] || {};
+      const touchedInMode = Boolean(record.selected || record.correct || record.wrong || record.bookmarked);
+      const preferred = newerProgressRecord(existing, record);
+      next[sourceId] = {
+        ...preferred,
+        modes: { ...(existing.modes || {}), ...(record.modes || {}), [mode]: touchedInMode },
+      };
+      changed = true;
+    }
+  }
+  localStorage.setItem(LEGACY_MIGRATION_KEY, "done");
+  return { progress: next, changed };
+}
+
+function normalizeLegacyProgressId(id) {
+  const value = String(id || "");
+  const match = value.match(/^(?:full|refined|ultra)-(.+)$/);
+  return match ? match[1] : value;
+}
+
+function newerProgressRecord(existing, incoming) {
+  if (!existing.selected) return { ...existing, ...incoming };
+  if (!incoming.selected) return existing;
+  const existingTime = Date.parse(existing.lastAnsweredAt || "") || 0;
+  const incomingTime = Date.parse(incoming.lastAnsweredAt || "") || 0;
+  return incomingTime >= existingTime ? { ...existing, ...incoming } : existing;
 }
 
 function updateUrlMode(mode) {
