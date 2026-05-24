@@ -25,6 +25,7 @@ const TRAINING_MODES = {
 const GLOBAL_PROGRESS_KEY = "ec_exam_choice_progress_by_source_v2";
 const LEGACY_MIGRATION_KEY = "ec_exam_choice_progress_migrated_v3";
 const SESSION_KEY = "ec_exam_anonymous_session_v1";
+const OPTION_HINTS_KEY = "ec_exam_hide_option_hints_v1";
 const LEGACY_PROGRESS_KEYS = Object.fromEntries(
   Object.entries(TRAINING_MODES).map(([mode, config]) => [mode, config.storeKey]),
 );
@@ -39,6 +40,7 @@ const elements = {
   category: document.getElementById("categorySelect"),
   search: document.getElementById("searchInput"),
   shuffle: document.getElementById("shuffleToggle"),
+  hideOptionHints: document.getElementById("hideOptionHintsToggle"),
   autoNext: document.getElementById("autoNextToggle"),
   segments: Array.from(document.querySelectorAll(".segment")),
   statCorrect: document.getElementById("statCorrect"),
@@ -91,6 +93,11 @@ function bindEvents() {
   elements.category.addEventListener("change", () => rebuildDeck());
   elements.search.addEventListener("input", debounce(() => rebuildDeck(), 180));
   elements.shuffle.addEventListener("change", () => rebuildDeck());
+  elements.hideOptionHints.checked = localStorage.getItem(OPTION_HINTS_KEY) === "1";
+  elements.hideOptionHints.addEventListener("change", () => {
+    localStorage.setItem(OPTION_HINTS_KEY, elements.hideOptionHints.checked ? "1" : "0");
+    renderQuestion();
+  });
 
   elements.segments.forEach((button) => {
     button.addEventListener("click", () => {
@@ -298,7 +305,7 @@ function renderQuestion() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "option-button";
-    button.innerHTML = `<span class="option-key">${escapeHtml(key)}</span><span>${escapeHtml(value)}</span>`;
+    button.innerHTML = `<span class="option-key">${escapeHtml(key)}</span><span>${escapeHtml(optionText(value))}</span>`;
     if (done && key === question.answer) button.classList.add("correct");
     if (done && key === record.selected && key !== question.answer) button.classList.add("wrong");
     button.addEventListener("click", () => answer(key));
@@ -338,8 +345,8 @@ function answer(key) {
 
 function renderFeedback(question, selected, isCorrect) {
   const config = TRAINING_MODES[state.trainingMode];
-  const selectedText = question.options[selected];
-  const answerText = question.options[question.answer];
+  const selectedText = optionText(question.options[selected]);
+  const answerText = optionText(question.options[question.answer]);
   const reason = question.pitfall || question.quality_reason || config.noAnalysisText;
   const memory = question.memory_tip ? `记忆提示：${question.memory_tip}` : "";
   const confidence = question.confidence ? `题库置信度：${Math.round(question.confidence * 100)}%` : "";
@@ -442,7 +449,6 @@ function exportWrongImage() {
 }
 
 function buildWrongExportBlock(question, record, index, context, width, fonts) {
-  const selectedText = question.options?.[record.selected] || "未记录选项内容";
   const reason = question.pitfall || question.quality_reason || TRAINING_MODES[state.trainingMode].noAnalysisText;
   const memory = question.memory_tip || "暂无记忆提示。";
   const meta = `#${index} · 原第 ${question.order} 题 · ${question.category || "未分类"}`;
@@ -455,7 +461,7 @@ function buildWrongExportBlock(question, record, index, context, width, fonts) {
     const isCorrect = key === question.answer;
     const isWrongSelected = key === record.selected && key !== question.answer;
     const marker = isCorrect ? "正确" : isWrongSelected ? "你的选择" : "";
-    const label = marker ? `${key}. ${value}  ${marker}` : `${key}. ${value}`;
+    const label = marker ? `${key}. ${optionText(value)}  ${marker}` : `${key}. ${optionText(value)}`;
     const lines = wrapCanvasText(context, label, optionWidth, fonts.smallFont);
     return {
       lines,
@@ -719,4 +725,14 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+function optionText(value) {
+  const text = String(value ?? "");
+  if (!elements.hideOptionHints.checked) return text;
+  return text
+    .replace(/（[^（）]*）/g, "")
+    .replace(/\([^()]*\)/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
 }
