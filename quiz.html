@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>精炼选择题训练</title>
+    <title>选择题训练</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -21,7 +21,43 @@
         </div>
       </header>
 
-      <main class="practice-shell">
+      <main class="mode-shell" id="modeShell">
+        <section class="mode-hero" aria-labelledby="modeTitle">
+          <p class="eyebrow">Choice Training</p>
+          <h1 id="modeTitle">选择你的训练强度</h1>
+          <p>
+            全量用于覆盖，精简用于提分，极简用于临考前把最容易掉坑的题再过一遍。也可以直接跳过，带着玄学祝福上场。
+          </p>
+        </section>
+        <section class="mode-grid" aria-label="训练强度选择">
+          <button class="mode-card" type="button" data-training="full">
+            <span class="route-kicker">Full</span>
+            <strong>全量训练</strong>
+            <small>约 4-6 小时 · 1218 题</small>
+            <span>覆盖原始全部选择判断题，适合第一轮完整扫盲。</span>
+          </button>
+          <button class="mode-card recommended" type="button" data-training="refined">
+            <span class="route-kicker">Focused</span>
+            <strong>精简训练</strong>
+            <small>约 90-120 分钟 · 373 题</small>
+            <span>使用已提炼题库，带分类、错因解析和记忆提示。</span>
+          </button>
+          <button class="mode-card" type="button" data-training="ultra">
+            <span class="route-kicker">Ultra</span>
+            <strong>极简训练</strong>
+            <small>约 30-45 分钟 · 约 112 题</small>
+            <span>从精选题继续压缩，优先反直觉和容易被选项长度诱导的题。</span>
+          </button>
+          <a class="mode-card skip-card" href="./skip.html">
+            <span class="route-kicker">Skip</span>
+            <strong>直接跳过</strong>
+            <small>约 5 秒</small>
+            <span>如果你已经和题库和解，就收下考前祝福。</span>
+          </a>
+        </section>
+      </main>
+
+      <main class="practice-shell hidden" id="practiceShell">
         <aside class="control-panel" aria-label="练习设置">
           <div class="panel-section">
             <p class="section-label">训练模式</p>
@@ -30,6 +66,10 @@
               <button class="segment" type="button" data-mode="wrong">错题</button>
               <button class="segment" type="button" data-mode="bookmarked">收藏</button>
             </div>
+          </div>
+
+          <div class="panel-section">
+            <button class="ghost-button mode-back" id="changeTraining" type="button">切换训练强度</button>
           </div>
 
           <div class="panel-section">
@@ -67,7 +107,7 @@
           <div class="stage-head">
             <div>
               <p class="eyebrow" id="questionMeta">正在加载题库</p>
-              <h1 id="questionTitle">精炼选择题训练</h1>
+              <h1 id="questionTitle">选择题训练</h1>
             </div>
             <button class="icon-button" id="bookmarkButton" type="button" title="收藏本题" aria-label="收藏本题">☆</button>
           </div>
@@ -77,7 +117,7 @@
           </div>
 
           <article class="question-card">
-            <p class="question-text" id="questionText">正在读取 qxueyou_refined_practice_questions.json...</p>
+            <p class="question-text" id="questionText">请选择训练强度。</p>
             <div class="options-grid" id="optionsGrid"></div>
             <div class="feedback-box idle" id="feedbackBox">
               <strong>作答后显示反馈</strong>

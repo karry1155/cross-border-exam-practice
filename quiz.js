@@ -1,7 +1,32 @@
-const DATA_URL = "./qxueyou_refined_practice_questions.json";
-const STORE_KEY = "ec_exam_refined_choice_progress_v1";
+const TRAINING_MODES = {
+  full: {
+    title: "全量训练",
+    dataUrl: "./full_questions.json",
+    storeKey: "ec_exam_full_choice_progress_v1",
+    loadingText: "正在读取 full_questions.json...",
+    noAnalysisText: "全量题库保留原始题干、选项和答案，原始数据没有逐题分类和错因解析。",
+  },
+  refined: {
+    title: "精简训练",
+    dataUrl: "./qxueyou_refined_practice_questions.json",
+    storeKey: "ec_exam_refined_choice_progress_v1",
+    loadingText: "正在读取 qxueyou_refined_practice_questions.json...",
+    noAnalysisText: "这题的关键是区分题干中的限定词和选项概念边界。",
+  },
+  ultra: {
+    title: "极简训练",
+    dataUrl: "./ultra_questions.json",
+    storeKey: "ec_exam_ultra_choice_progress_v1",
+    loadingText: "正在读取 ultra_questions.json...",
+    noAnalysisText: "极简题库优先保留反直觉和易错题，注意不要被选项长短诱导。",
+  },
+};
 
 const elements = {
+  modeShell: document.getElementById("modeShell"),
+  practiceShell: document.getElementById("practiceShell"),
+  modeCards: Array.from(document.querySelectorAll("[data-training]")),
+  changeTraining: document.getElementById("changeTraining"),
   category: document.getElementById("categorySelect"),
   search: document.getElementById("searchInput"),
   shuffle: document.getElementById("shuffleToggle"),
@@ -29,38 +54,27 @@ const state = {
   all: [],
   deck: [],
   index: 0,
-  mode: "all",
-  progress: loadProgress(),
+  filterMode: "all",
+  trainingMode: "",
+  progress: {},
+  metadata: {},
 };
 
-init();
-
-async function init() {
-  bindEvents();
-  try {
-    const response = await fetch(DATA_URL);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const payload = await response.json();
-    state.all = (payload.questions || []).map((question, index) => ({
-      ...question,
-      id: String(question.source_id || index + 1),
-      order: index + 1,
-    }));
-    hydrateCategories();
-    rebuildDeck();
-  } catch (error) {
-    renderLoadError(error);
-  }
-}
+bindEvents();
+restoreModeFromUrl();
 
 function bindEvents() {
+  elements.modeCards.forEach((button) => {
+    button.addEventListener("click", () => startTraining(button.dataset.training));
+  });
+  elements.changeTraining.addEventListener("click", () => showModeSelect());
   elements.category.addEventListener("change", () => rebuildDeck());
   elements.search.addEventListener("input", debounce(() => rebuildDeck(), 180));
   elements.shuffle.addEventListener("change", () => rebuildDeck());
 
   elements.segments.forEach((button) => {
     button.addEventListener("click", () => {
-      state.mode = button.dataset.mode;
+      state.filterMode = button.dataset.mode;
       elements.segments.forEach((item) => item.classList.toggle("active", item === button));
       rebuildDeck();
     });
@@ -84,7 +98,8 @@ function bindEvents() {
   });
 
   elements.reset.addEventListener("click", () => {
-    if (!confirm("确定清空选择题练习进度、错题和收藏吗？")) return;
+    if (!state.trainingMode) return;
+    if (!confirm(`确定清空“${TRAINING_MODES[state.trainingMode].title}”的练习进度、错题和收藏吗？`)) return;
     state.progress = {};
     saveProgress();
     rebuildDeck();
@@ -99,16 +114,81 @@ function bindEvents() {
   });
 }
 
+function restoreModeFromUrl() {
+  const mode = new URLSearchParams(window.location.search).get("mode");
+  if (TRAINING_MODES[mode]) startTraining(mode);
+}
+
+async function startTraining(mode) {
+  const config = TRAINING_MODES[mode];
+  if (!config) return;
+  state.trainingMode = mode;
+  state.all = [];
+  state.deck = [];
+  state.index = 0;
+  state.progress = loadProgress(config.storeKey);
+  state.metadata = {};
+  showPractice(config);
+
+  try {
+    const response = await fetch(config.dataUrl);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const payload = await response.json();
+    const questions = Array.isArray(payload) ? payload : payload.questions || [];
+    state.metadata = Array.isArray(payload) ? {} : payload.metadata || {};
+    state.all = questions.map((question, index) => ({
+      ...question,
+      id: `${mode}-${question.source_id || question.id || index + 1}`,
+      order: index + 1,
+      category: question.category || config.title,
+      knowledge_point: question.knowledge_point || "综合训练",
+    }));
+    hydrateCategories();
+    rebuildDeck();
+    updateUrlMode(mode);
+  } catch (error) {
+    renderLoadError(error, config);
+  }
+}
+
+function showPractice(config) {
+  elements.modeShell.classList.add("hidden");
+  elements.practiceShell.classList.remove("hidden");
+  elements.meta.textContent = "正在加载题库";
+  elements.title.textContent = config.title;
+  elements.text.textContent = config.loadingText;
+  elements.options.innerHTML = "";
+  elements.feedback.className = "feedback-box idle";
+  elements.feedback.innerHTML = "<strong>读取题库中</strong><span>马上进入练习。</span>";
+  elements.progress.style.width = "0%";
+  resetFilters();
+}
+
+function showModeSelect() {
+  elements.practiceShell.classList.add("hidden");
+  elements.modeShell.classList.remove("hidden");
+  window.history.replaceState({}, "", window.location.pathname);
+}
+
+function resetFilters() {
+  elements.category.innerHTML = `<option value="all">全部分类</option>`;
+  elements.search.value = "";
+  state.filterMode = "all";
+  elements.segments.forEach((button) => button.classList.toggle("active", button.dataset.mode === "all"));
+}
+
 function hydrateCategories() {
   const categories = Array.from(new Set(state.all.map((item) => item.category).filter(Boolean))).sort((a, b) =>
     a.localeCompare(b, "zh-Hans-CN"),
   );
-  categories.forEach((category) => {
+  for (const category of categories) {
     const option = document.createElement("option");
     option.value = category;
     option.textContent = category;
     elements.category.appendChild(option);
-  });
+  }
+  const hasRealCategories = categories.length > 1 || categories[0] !== TRAINING_MODES[state.trainingMode].title;
+  elements.category.disabled = !hasRealCategories;
 }
 
 function rebuildDeck() {
@@ -118,9 +198,9 @@ function rebuildDeck() {
   let deck = state.all.filter((question) => {
     const record = state.progress[question.id];
     const inMode =
-      state.mode === "all" ||
-      (state.mode === "wrong" && record?.wrong) ||
-      (state.mode === "bookmarked" && record?.bookmarked);
+      state.filterMode === "all" ||
+      (state.filterMode === "wrong" && record?.wrong) ||
+      (state.filterMode === "bookmarked" && record?.bookmarked);
     const inCategory = category === "all" || question.category === category;
     const text = `${question.question} ${question.category || ""} ${question.knowledge_point || ""}`.toLowerCase();
     const inSearch = !keyword || text.includes(keyword);
@@ -153,13 +233,14 @@ function renderQuestion() {
     return;
   }
 
+  const config = TRAINING_MODES[state.trainingMode];
   const record = state.progress[question.id] || {};
   const done = Boolean(record.selected);
   const isCorrect = record.selected === question.answer;
   const total = state.deck.length;
   const displayIndex = state.index + 1;
 
-  elements.meta.textContent = `${question.category || "未分类"} · ${question.knowledge_point || "综合考点"} · ${displayIndex}/${total}`;
+  elements.meta.textContent = `${config.title} · ${question.category || "未分类"} · ${question.knowledge_point || "综合考点"} · ${displayIndex}/${total}`;
   elements.title.textContent = `第 ${question.order} 题`;
   elements.text.textContent = question.question;
   elements.progress.style.width = `${(displayIndex / Math.max(total, 1)) * 100}%`;
@@ -183,7 +264,8 @@ function renderQuestion() {
 
   if (!done) {
     elements.feedback.className = "feedback-box idle";
-    elements.feedback.innerHTML = "<strong>请选择答案</strong><span>点击选项后会立刻判断，并给出错因解析。</span>";
+    const suffix = state.trainingMode === "full" ? "全量题答题后会显示正确答案；原始题库没有逐题错因解析。" : "答错会展示解析原因和记忆提示。";
+    elements.feedback.innerHTML = `<strong>请选择答案</strong><span>${escapeHtml(suffix)}</span>`;
   } else {
     renderFeedback(question, record.selected, isCorrect);
   }
@@ -209,24 +291,25 @@ function answer(key) {
 }
 
 function renderFeedback(question, selected, isCorrect) {
+  const config = TRAINING_MODES[state.trainingMode];
   const selectedText = question.options[selected];
   const answerText = question.options[question.answer];
-  const reason = question.pitfall || "这题的关键是区分题干中的限定词和选项概念边界。";
+  const reason = question.pitfall || question.ultra_reason || config.noAnalysisText;
   const memory = question.memory_tip ? `记忆提示：${question.memory_tip}` : "";
   const confidence = question.confidence ? `题库置信度：${Math.round(question.confidence * 100)}%` : "";
   const keep = question.why_keep ? `入选原因：${question.why_keep}` : "";
+  const rewritten = question.rewritten ? "本题已压平选项长度，避免“三短一长”诱导。" : "";
   elements.feedback.className = `feedback-box ${isCorrect ? "good" : "bad"}`;
   elements.feedback.innerHTML = isCorrect
-    ? `<strong>回答正确：${escapeHtml(question.answer)}. ${escapeHtml(answerText)}</strong><span>${escapeHtml(memory || keep || "继续保持这个节奏。")}</span>`
-    : `<strong>回答错误：你选了 ${escapeHtml(selected)}. ${escapeHtml(selectedText)}</strong><span>正确答案：${escapeHtml(question.answer)}. ${escapeHtml(answerText)}<br>${escapeHtml(reason)}${memory ? `<br>${escapeHtml(memory)}` : ""}${confidence ? `<br>${escapeHtml(confidence)}` : ""}</span>`;
+    ? `<strong>回答正确：${escapeHtml(question.answer)}. ${escapeHtml(answerText)}</strong><span>${escapeHtml(memory || rewritten || keep || "继续保持这个节奏。")}</span>`
+    : `<strong>回答错误：你选了 ${escapeHtml(selected)}. ${escapeHtml(selectedText)}</strong><span>正确答案：${escapeHtml(question.answer)}. ${escapeHtml(answerText)}<br>${escapeHtml(reason)}${memory ? `<br>${escapeHtml(memory)}` : ""}${rewritten ? `<br>${escapeHtml(rewritten)}` : ""}${confidence ? `<br>${escapeHtml(confidence)}` : ""}</span>`;
 }
 
 function updateStats() {
   const values = Object.values(state.progress);
-  const answered = values.filter((item) => item.selected).length;
   elements.statCorrect.textContent = values.filter((item) => item.correct).length;
   elements.statWrong.textContent = values.filter((item) => item.wrong).length;
-  elements.statDone.textContent = answered;
+  elements.statDone.textContent = values.filter((item) => item.selected).length;
   elements.statTotal.textContent = state.all.length;
 }
 
@@ -252,16 +335,22 @@ function recordFor(id) {
   return state.progress[id];
 }
 
-function loadProgress() {
+function loadProgress(key) {
   try {
-    return JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+    return JSON.parse(localStorage.getItem(key) || "{}");
   } catch {
     return {};
   }
 }
 
 function saveProgress() {
-  localStorage.setItem(STORE_KEY, JSON.stringify(state.progress));
+  localStorage.setItem(TRAINING_MODES[state.trainingMode].storeKey, JSON.stringify(state.progress));
+}
+
+function updateUrlMode(mode) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("mode", mode);
+  window.history.replaceState({}, "", url);
 }
 
 function shuffle(items) {
@@ -273,10 +362,10 @@ function shuffle(items) {
   return copy;
 }
 
-function renderLoadError(error) {
+function renderLoadError(error, config) {
   elements.meta.textContent = "题库读取失败";
-  elements.title.textContent = "需要通过本地服务或 GitHub Pages 打开";
-  elements.text.innerHTML = `<div class="empty-state">没有读取到题库数据。请确认 qxueyou_refined_practice_questions.json 与页面在同一目录，或使用本项目的本地预览服务打开。<br>${escapeHtml(error.message)}</div>`;
+  elements.title.textContent = "需要通过本地服务或 Cloudflare Pages 打开";
+  elements.text.innerHTML = `<div class="empty-state">没有读取到题库数据。请确认 ${escapeHtml(config.dataUrl)} 与页面一起发布。<br>${escapeHtml(error.message)}</div>`;
   elements.feedback.className = "feedback-box bad";
   elements.feedback.innerHTML = "<strong>数据未加载</strong><span>页面本身正常，等待题库 JSON 可访问。</span>";
 }
